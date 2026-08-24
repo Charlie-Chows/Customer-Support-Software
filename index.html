@@ -1433,25 +1433,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.utils.toArray("section:not(.hero-section)").forEach((section) => {
 
-    const elements = section.querySelectorAll(
-      ".section-label, h2, h3, p, .feature-list, .feature-card, .automation-card, .analytics-stat, .testimonial-card"
+    const textElements = section.querySelectorAll(
+      ".section-label, h2, h3, p, .feature-list"
     );
 
-    gsap.from(elements, {
+    if (textElements.length > 0) {
+      gsap.from(textElements, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 78%",
+          once: true
+        },
+        x: -80,
+        opacity: 0,
+        stagger: .08,
+        duration: 1.5,
+        ease: "power3.out"
+      });
+    }
 
-      scrollTrigger: {
-        trigger: section,
-        start: "top 78%",
-        once: true
-      },
+    const cards = section.querySelectorAll(
+      ".feature-card, .automation-card, .testimonial-card"
+    );
 
-      y: 45,
-      opacity: 0,
-      stagger: .08,
-      duration: .8,
-      ease: "power3.out"
-
-    });
+    if (cards.length > 0) {
+      gsap.utils.toArray(cards).forEach((card, index) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            once: true
+          },
+          x: index % 2 === 0 ? -80 : 80,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power3.out"
+        });
+      });
+    }
 
   });
 
@@ -1472,7 +1491,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       x: -100,
       opacity: 0,
-      duration: 1,
+      duration: 1.5,
       ease: "power4.out"
 
     });
@@ -1492,7 +1511,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       x: 100,
       opacity: 0,
-      duration: 1,
+      duration: 1.5,
       ease: "power4.out"
 
     });
@@ -1557,8 +1576,8 @@ document.addEventListener("DOMContentLoaded", () => {
           el.textContent = counter.value.toFixed(decimals) + suffix;
         }});
       });
-      gsap.fromTo(".analytics-stat", { y: 35, opacity: 0, scale: .96 }, { y: 0, opacity: 1, scale: 1, duration: .75, stagger: .12, ease: "power3.out" });
-      gsap.fromTo(".big-chart span", { scaleY: 0, opacity: .2 }, { scaleY: 1, opacity: 1, duration: 1.15, stagger: .11, transformOrigin: "bottom", ease: "power4.out" });
+      gsap.fromTo(".analytics-stat", { x: (i) => i % 2 === 0 ? -80 : 80, opacity: 0, scale: .96 }, { x: 0, opacity: 1, scale: 1, duration: 1.5, stagger: .12, ease: "power3.out" });
+      gsap.fromTo(".big-chart span", { scaleY: 0, opacity: .2 }, { scaleY: 1, opacity: 1, duration: 1.5, stagger: .11, transformOrigin: "bottom", ease: "power4.out" });
     }
   });
 

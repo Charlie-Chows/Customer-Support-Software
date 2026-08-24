@@ -948,100 +948,40 @@
 
 
       /* ======================================================
-         SCROLL REVEALS & CARDS (RESPONSIVE)
+         SLIDE IN ANIMATIONS (Left & Right)
       ====================================================== */
 
-      let mm = gsap.matchMedia();
-
-      mm.add("(min-width: 769px)", () => {
-
-        // Desktop Generic Reveals
-        gsap.utils.toArray(
-          ".section-intro, .story-copy, .story-visual, " +
-          ".mission-heading, .mission-copy, " +
-          ".principles-grid, .impact-heading, .impact-card, " +
-          ".impact-message, .about-cta-box"
-        ).forEach((element) => {
-          gsap.from(element, {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 82%",
-              once: true
-            }
-          });
-        });
-
-        // Desktop Belief Cards Stagger
-        gsap.from(".belief-card", {
-          y: 60,
+      // Slide Left Elements
+      gsap.utils.toArray(".section-intro, .story-copy, .mission-copy, .impact-message, .about-cta-box, .principles-grid").forEach((element) => {
+        gsap.from(element, {
+          x: -80,
           opacity: 0,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".belief-grid",
-            start: "top 80%",
-            once: true
-          }
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: { trigger: element, start: "top 85%", once: true }
         });
-
-        // Desktop Principle Cards Stagger
-        gsap.from(".principle-card", {
-          y: 50,
-          opacity: 0,
-          stagger: 0.12,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".principles-grid",
-            start: "top 80%",
-            once: true
-          }
-        });
-
       });
 
-      mm.add("(max-width: 768px)", () => {
-
-        // Mobile Generic Reveals (excluding cards)
-        gsap.utils.toArray(
-          ".section-intro, .story-copy, .story-visual, " +
-          ".mission-heading, .mission-copy, " +
-          ".principles-grid, .impact-heading, " +
-          ".impact-message, .about-cta-box"
-        ).forEach((element) => {
-          gsap.from(element, {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 85%",
-              once: true
-            }
-          });
+      // Slide Right Elements
+      gsap.utils.toArray(".story-visual, .mission-heading, .impact-heading").forEach((element) => {
+        gsap.from(element, {
+          x: 80,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: { trigger: element, start: "top 85%", once: true }
         });
+      });
 
-        // Mobile Alternating Cards
-        gsap.utils.toArray(".belief-card, .principle-card, .impact-card").forEach((card, index) => {
-          gsap.from(card, {
-            x: index % 2 === 0 ? 50 : -50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              once: true
-            }
-          });
+      // Alternating Cards
+      gsap.utils.toArray(".belief-card, .principle-card, .impact-card").forEach((card, index) => {
+        gsap.from(card, {
+          x: index % 2 === 0 ? -80 : 80,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: { trigger: card, start: "top 85%", once: true }
         });
-
       });
 
 

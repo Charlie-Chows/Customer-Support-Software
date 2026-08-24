@@ -1295,7 +1295,7 @@
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 1.5, // Increased duration
             ease: "power2.out",
             scrollTrigger: {
               trigger: element,
@@ -1305,6 +1305,34 @@
           }
         );
 
+      });
+
+      /* =====================================================
+         SLIDE IN (LEFT & RIGHT)
+      ====================================================== */
+
+      gsap.utils.toArray(".channel-card, .feature-item").forEach((card, index) => {
+        card.classList.remove("reveal"); // Prevent double animation
+        gsap.fromTo(card, 
+          { opacity: 0, x: index % 2 === 0 ? -80 : 80, y: 0 },
+          { opacity: 1, x: 0, duration: 1.5, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", once: true } }
+        );
+      });
+
+      gsap.utils.toArray(".section-copy > *, .productivity-visual").forEach((el) => {
+        el.classList.remove("reveal");
+        gsap.fromTo(el,
+          { opacity: 0, x: -80, y: 0 },
+          { opacity: 1, x: 0, duration: 1.5, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } }
+        );
+      });
+
+      gsap.utils.toArray(".automation-visual, .section-heading > *").forEach((el) => {
+        el.classList.remove("reveal");
+        gsap.fromTo(el,
+          { opacity: 0, x: 80, y: 0 },
+          { opacity: 1, x: 0, duration: 1.5, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } }
+        );
       });
 
 
@@ -1364,12 +1392,13 @@
           card,
           {
             opacity: 0,
-            y: 40
+            x: index % 2 === 0 ? -60 : 60,
+            y: 0
           },
           {
             opacity: 1,
-            y: 0,
-            duration: 0.65,
+            x: 0,
+            duration: 1.5,
             delay: index * 0.12,
             ease: "power2.out",
             scrollTrigger: {
@@ -1414,18 +1443,23 @@
          OUTCOME NUMBERS
       ====================================================== */
 
-      gsap.from(".outcome-card", {
-        opacity: 0,
-        scale: 0.9,
-        y: 30,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "back.out(1.4)",
-        scrollTrigger: {
-          trigger: ".outcome-grid",
-          start: "top 80%",
-          once: true
-        }
+      gsap.utils.toArray(".outcome-card").forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, x: index % 2 === 0 ? -60 : 60, scale: 0.95 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              once: true
+            }
+          }
+        );
       });
 
 

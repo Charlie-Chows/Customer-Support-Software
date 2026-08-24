@@ -383,9 +383,16 @@
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 4rem 1.5rem;
 }
+
+.article-card:nth-child(1) { grid-column: span 3; }
+.article-card:nth-child(2) { grid-column: span 3; }
+.article-card:nth-child(3) { grid-column: span 4; }
+.article-card:nth-child(4) { grid-column: span 2; }
+.article-card:nth-child(5) { grid-column: span 2; }
+.article-card:nth-child(6) { grid-column: span 4; }
 
 .article-card {
   min-width: 0;
@@ -395,7 +402,7 @@
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 1.35 / 1;
+  height: 340px;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: #e5e5e5;
@@ -734,6 +741,14 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 3.5rem 1.25rem;
   }
+  
+  .articles-grid .article-card {
+    grid-column: span 1 !important;
+  }
+  
+  .article-image {
+    height: 280px;
+  }
 
   .newsletter-card {
     grid-template-columns: 1fr;
@@ -864,9 +879,13 @@
     grid-template-columns: 1fr;
     gap: 3.5rem;
   }
+  
+  .articles-grid .article-card {
+    grid-column: 1 / -1 !important;
+  }
 
   .article-image {
-    aspect-ratio: 1.35 / 1;
+    height: 250px;
   }
 
   .article-card-content h3 {
@@ -887,13 +906,16 @@
   }
 
   .insight-card {
-    min-height: 480px;
+    min-height: auto;
     padding: 2.5rem 1.5rem;
-    align-items: flex-start;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 2rem;
   }
 
   .insight-content {
     max-width: 100%;
+    order: 1;
   }
 
   .insight-content h2 {
@@ -905,12 +927,16 @@
   }
 
   .insight-decoration {
-    width: 300px;
-    height: 300px;
-    right: -170px;
-    bottom: -40px;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    right: auto;
+    bottom: auto;
     top: auto;
     transform: none;
+    border-radius: 50%;
+    order: 2;
   }
 
 
