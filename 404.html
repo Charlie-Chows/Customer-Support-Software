@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Customer Support SaaS</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    .not-found-section {
+      min-height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      padding-top: 150px;
+    }
+
+    .not-found-content {
+      max-width: 600px;
+    }
+
+    .error-code {
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 700;
+      color: var(--color-border);
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .not-found-title {
+      margin-bottom: var(--space-sm);
+    }
+
+    .not-found-desc {
+      color: var(--color-text-light);
+      margin-bottom: var(--space-lg);
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+
+    .not-found-actions {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="not-found-section">
+      <div class="container">
+        <div class="not-found-content">
+          <div class="error-code" id="anim-404">404</div>
+          <h1 class="not-found-title font-serif-italic" id="anim-title">Page Not Found</h1>
+          <p class="not-found-desc" id="anim-desc">The page you are looking for doesn't exist or has been moved.</p>
+          <div class="not-found-actions" id="anim-actions">
+            <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
+            <a href="index.html" class="btn btn-primary">Back to Home <span class="btn-icon"><i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/common.js"></script>
+  
+  <script>
+    // Go back logic
+    function goBack() {
+      if (window.history.length > 1 && document.referrer !== "") {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    // 404 entrance animation using our foundation
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AppAnimations) {
+        gsap.from('#anim-404', { y: -50, opacity: 0, duration: 1, ease: 'bounce.out' });
+        window.AppAnimations.fadeUp('#anim-title', { delay: 0.3 });
+        window.AppAnimations.fadeUp('#anim-desc', { delay: 0.5 });
+        window.AppAnimations.fadeUp('#anim-actions', { delay: 0.7 });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!-- ==========================================================================
+     COMMON HTML - Shared Header and Footer Structure
+     ========================================================================== -->
+
+<!-- 
+  NOTE: This file serves as a reference/source for the shared Header and Footer.
+  It is not meant to be served directly to users. 
+  When building out actual pages, copy these structures into the respective HTML files.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Reference</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    
+    <!-- Brand Logo -->
+    <a href="../index.html" class="brand-logo" aria-label="Go to homepage">
+      <img src="../logo_trimmed.webp" alt="Customer Support SaaS Logo">
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="main-nav" aria-label="Primary navigation">
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Desktop Actions -->
+    <div class="header-actions">
+      <a href="login.html" class="btn btn-secondary">Log in</a>
+      <a href="signup.html" class="btn btn-primary">Join the waitlist <span class="btn-icon"><i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i></span></a>
+    </div>
+
+    <!-- Hamburger Button (Mobile) -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-header-actions">
+      <a href="login.html" class="btn btn-secondary">Log in</a>
+      <a href="signup.html" class="btn btn-primary">Join the waitlist <span class="btn-icon"><i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i></span></a>
+    </div>
+  </div>
+  <!-- ================================================ -->
+
+
+  <!-- Main Content Placeholder -->
+  <main style="min-height: 80vh; padding-top: 150px; text-align: center;">
+    <div class="container">
+      <!-- Example typography preview matching the design -->
+      <h1>Complete AI Customer<br> <span class="font-serif-italic">Support Ecosystem</span></h1>
+      <p style="max-width: 600px; margin: 2rem auto; color: var(--color-text-light); font-weight: 500;">
+        We resolve 60-80% of your customers' complex support issues via phone, email, and web, reducing your costs by over 50%
+      </p>
+      <a href="signup.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">Join the waitlist <span class="btn-icon"><i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i></span></a>
+    </div>
+  </main>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo" aria-label="Go to homepage">
+            <img src="../logo_trimmed.webp" alt="Customer Support SaaS Logo">
+          </a>
+          <p>We resolve 60-80% of your customers' complex support issues via phone, email, and web, reducing your costs by over 50%</p>
+          <div class="social-icons">
+            <a href="../404.html" aria-label="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+            <a href="../404.html" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="../404.html" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="../404.html" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="../404.html">Leadership</a></li>
+            <li><a href="../404.html">Customers</a></li>
+            <li><a href="../404.html">Press</a></li>
+            <li><a href="../404.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../404.html">Privacy Policy</a></li>
+            <li><a href="../404.html">Terms of Service</a></li>
+            <li><a href="../404.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Customer Support SaaS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ================================================ -->
+
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/common.js"></script>
+</body>
+</html>

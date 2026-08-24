@@ -1,0 +1,1749 @@
+/* =========================================================
+   ABOUT PAGE
+   Customer Support SaaS
+========================================================= */
+
+
+/* =========================================================
+   SHARED ABOUT VARIABLES
+========================================================= */
+
+.about-hero,
+.about-section,
+.mission-section,
+.impact-section,
+.about-cta-section {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+.nav-links a.active,
+.mobile-nav-links a.active {
+  position: relative;
+  font-weight: 700;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+
+  width: 5px;
+  height: 5px;
+
+  margin: auto;
+
+  background: var(--color-text-dark);
+
+  border-radius: 50%;
+}
+
+.mobile-nav-links a.active {
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: var(--color-text-light);
+
+  margin-bottom: 1.25rem;
+}
+
+
+/* =========================================================
+   02 ABOUT HERO
+========================================================= */
+
+.about-hero {
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 160px 0 100px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(0, 0, 0, 0.045),
+      transparent 38%
+    );
+}
+
+
+/* subtle background grid */
+
+.about-hero-grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 90%
+    );
+
+}
+
+
+.about-hero-content {
+
+  position: relative;
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+}
+
+
+.about-eyebrow {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 7px 13px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-pill);
+
+  background: rgba(255,255,255,0.7);
+
+  font-size: 0.72rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+}
+
+
+.about-eyebrow::before {
+
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #111;
+
+}
+
+
+.about-hero-title {
+
+  margin-top: 1.5rem;
+
+  margin-bottom: 1.75rem;
+
+  font-size: clamp(
+    3.2rem,
+    8vw,
+    6.5rem
+  );
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+
+}
+
+
+.about-hero-title .font-serif-italic {
+
+  font-weight: 400;
+
+}
+
+
+.about-hero-description {
+
+  max-width: 690px;
+
+  margin: 0 auto 2rem;
+
+  color: var(--color-text-light);
+
+  font-size: clamp(
+    1rem,
+    2vw,
+    1.2rem
+  );
+
+  line-height: 1.75;
+
+  font-weight: 500;
+
+}
+
+
+.about-hero-actions {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 1.25rem;
+
+  flex-wrap: wrap;
+
+}
+
+
+.about-btn {
+
+  padding: 0.85rem 1.5rem;
+
+}
+
+
+.about-scroll-link {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.6rem;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+}
+
+
+.about-scroll-link span {
+
+  font-size: 1.15rem;
+
+  transition:
+    transform 0.25s ease;
+
+}
+
+
+.about-scroll-link:hover span {
+
+  transform: translateY(4px);
+
+}
+
+
+.hero-scroll-indicator {
+
+  position: absolute;
+
+  bottom: 35px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 1px;
+
+  height: 42px;
+
+  background: var(--color-border);
+
+  overflow: hidden;
+
+}
+
+
+.hero-scroll-indicator span {
+
+  display: block;
+
+  width: 100%;
+
+  height: 50%;
+
+  background: #111;
+
+  animation:
+    scrollIndicator 1.8s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes scrollIndicator {
+
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(200%);
+  }
+
+}
+
+
+/* =========================================================
+   GENERIC SECTION
+========================================================= */
+
+.about-section {
+
+  padding: 120px 0;
+
+}
+
+
+.section-intro {
+
+  max-width: 760px;
+
+  margin-bottom: 65px;
+
+}
+
+
+.section-intro h2 {
+
+  margin-bottom: 0;
+
+  font-size: clamp(
+    2.5rem,
+    5vw,
+    4rem
+  );
+
+  line-height: 1;
+
+}
+
+
+.section-intro.centered {
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  text-align: center;
+
+}
+
+
+.section-intro.centered p {
+
+  max-width: 600px;
+
+  margin:
+    1.5rem auto
+    0;
+
+  color: var(--color-text-light);
+
+  font-weight: 500;
+
+}
+
+
+/* =========================================================
+   03 OUR STORY
+========================================================= */
+
+.story-section {
+
+  background: #fff;
+
+  border-top: 1px solid var(--color-border-subtle);
+
+  border-bottom: 1px solid var(--color-border-subtle);
+
+}
+
+
+.story-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 0.9fr);
+
+  gap: 80px;
+
+  align-items: center;
+
+}
+
+
+.story-copy {
+
+  max-width: 620px;
+
+}
+
+
+.story-copy p {
+
+  color: var(--color-text-light);
+
+  font-weight: 500;
+
+}
+
+
+.story-copy .story-lead {
+
+  color: var(--color-text-dark);
+
+  font-size: 1.45rem;
+
+  line-height: 1.5;
+
+  font-weight: 600;
+
+  margin-bottom: 1.5rem;
+
+}
+
+
+/* visual */
+
+.story-visual {
+
+  position: relative;
+
+  min-height: 480px;
+
+}
+
+
+.story-card {
+
+  position: absolute;
+
+  background: #fff;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+
+.story-card-main {
+
+  width: 72%;
+
+  min-height: 300px;
+
+  left: 10%;
+
+  top: 70px;
+
+  padding: 35px;
+
+}
+
+
+.story-card-number {
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  color: var(--color-text-light);
+
+}
+
+
+.story-card-icon {
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin:
+    40px 0 25px;
+
+  border-radius: 16px;
+
+  background: #111;
+
+  color: white;
+
+  font-size: 1.4rem;
+
+}
+
+
+.story-card-main h3 {
+
+  margin-bottom: 10px;
+
+}
+
+
+.story-card-main p {
+
+  color: var(--color-text-light);
+
+  margin: 0;
+
+}
+
+
+.story-card-small {
+
+  width: 180px;
+
+  height: 100px;
+
+  right: 0;
+
+  top: 25px;
+
+  padding: 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+}
+
+
+.story-card-small.second {
+
+  right: 3%;
+
+  top: auto;
+
+  bottom: 30px;
+
+}
+
+
+.story-card-small span {
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  color: var(--color-text-light);
+
+}
+
+
+/* =========================================================
+   04 MISSION
+========================================================= */
+
+.mission-section {
+
+  padding: 130px 0;
+
+  background: #111;
+
+  color: white;
+
+}
+
+
+.mission-section h2 {
+
+  color: white;
+
+}
+
+
+.mission-section .section-label {
+
+  color: #aaa;
+
+}
+
+
+.mission-layout {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 100px;
+
+  align-items: end;
+
+  margin-bottom: 75px;
+
+}
+
+
+.mission-heading h2 {
+
+  font-size: clamp(
+    2.7rem,
+    5vw,
+    4.5rem
+  );
+
+  line-height: 1;
+
+  margin: 0;
+
+}
+
+
+.mission-copy {
+
+  max-width: 560px;
+
+}
+
+
+.mission-copy p {
+
+  color: #aaa;
+
+}
+
+
+.mission-copy .mission-large {
+
+  color: white;
+
+  font-size: 1.35rem;
+
+  line-height: 1.6;
+
+  font-weight: 500;
+
+  margin-bottom: 1.5rem;
+
+}
+
+
+/* belief cards */
+
+.belief-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 1px;
+
+  background: #333;
+
+  border: 1px solid #333;
+
+}
+
+
+.belief-card {
+
+  position: relative;
+
+  min-height: 310px;
+
+  padding: 32px;
+
+  background: #111;
+
+}
+
+
+.belief-number {
+
+  font-size: 0.7rem;
+
+  color: #777;
+
+  font-weight: 700;
+
+}
+
+
+.belief-icon {
+
+  margin:
+    55px 0 25px;
+
+  font-size: 1.5rem;
+
+  color: white;
+
+}
+
+
+.belief-card h3 {
+
+  color: white;
+
+  margin-bottom: 12px;
+
+}
+
+
+.belief-card p {
+
+  color: #888;
+
+  margin: 0;
+
+}
+
+
+/* =========================================================
+   05 HOW WE WORK
+========================================================= */
+
+.principles-section {
+
+  background: var(--color-bg);
+
+}
+
+
+.principles-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+
+}
+
+
+.principle-card:nth-child(1),
+.principle-card:nth-child(4) {
+  grid-column: span 2;
+}
+
+
+.principle-card {
+
+  position: relative;
+
+  padding: 35px;
+
+  min-height: 280px;
+
+  background: #fff;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+
+.principle-card:hover {
+
+  transform: translateY(-6px);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+
+.principle-top {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: var(--color-text-light);
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+}
+
+
+.principle-arrow {
+
+  font-size: 1.2rem;
+
+  color: #111;
+
+}
+
+
+.principle-line {
+
+  height: 1px;
+
+  background: var(--color-border);
+
+  margin:
+    25px 0 30px;
+
+}
+
+
+.principle-card h3 {
+
+  font-size: 1.5rem;
+
+  margin-bottom: 12px;
+
+}
+
+
+.principle-card p {
+
+  max-width: 480px;
+
+  color: var(--color-text-light);
+
+  margin: 0;
+
+}
+
+
+/* =========================================================
+   06 IMPACT
+========================================================= */
+
+.impact-section {
+
+  padding: 130px 0;
+
+  background: #fff;
+
+}
+
+
+.impact-heading {
+
+  max-width: 700px;
+
+  margin-bottom: 60px;
+
+}
+
+
+.impact-heading h2 {
+
+  font-size: clamp(
+    2.8rem,
+    5vw,
+    4.5rem
+  );
+
+  line-height: 0.98;
+
+}
+
+
+.impact-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+
+}
+
+
+.impact-card {
+
+  min-height: 320px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 32px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-xl);
+
+  background: var(--color-bg);
+
+  transition:
+    box-shadow 0.3s ease;
+
+}
+
+
+.impact-card > span {
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: var(--color-text-light);
+
+}
+
+
+.impact-number {
+
+  display: block;
+
+  font-size: clamp(
+    3.5rem,
+    7vw,
+    6rem
+  );
+
+  letter-spacing: -0.06em;
+
+  line-height: 1;
+
+}
+
+
+.impact-card p {
+
+  max-width: 260px;
+
+  color: var(--color-text-light);
+
+  margin: 0;
+
+  font-weight: 500;
+
+}
+
+
+.impact-message {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 55px;
+
+}
+
+
+.impact-message p {
+
+  margin: 0;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+}
+
+
+.impact-dot {
+
+  width: 8px;
+  height: 8px;
+
+  background: #111;
+
+  border-radius: 50%;
+
+  animation:
+    impactPulse 1.8s ease-in-out infinite;
+
+}
+
+
+@keyframes impactPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+}
+
+
+/* =========================================================
+   07 FINAL CTA
+========================================================= */
+
+.about-cta-section {
+
+  padding: 110px 0;
+
+  background: var(--color-bg);
+
+}
+
+
+.about-cta-glow {
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,0,0,0.07),
+      transparent 65%
+    );
+
+  pointer-events: none;
+
+}
+
+
+.about-cta-box {
+
+  position: relative;
+
+  max-width: 900px;
+
+  margin: auto;
+
+  padding:
+    75px 50px;
+
+  text-align: center;
+
+  background: #fff;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+
+.about-cta-box h2 {
+
+  max-width: 760px;
+
+  margin:
+    0 auto 20px;
+
+  font-size: clamp(
+    2.5rem,
+    5vw,
+    4.5rem
+  );
+
+  line-height: 1;
+
+}
+
+
+.about-cta-box p {
+
+  max-width: 600px;
+
+  margin:
+    0 auto 30px;
+
+  color: var(--color-text-light);
+
+  font-size: 1.05rem;
+
+}
+
+
+.about-cta-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991px) {
+
+
+  /* hero */
+
+  .about-hero {
+
+    padding-top: 145px;
+
+  }
+
+
+  /* story */
+
+  .story-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+  }
+
+
+  .story-copy {
+
+    max-width: 760px;
+
+  }
+
+
+  .story-visual {
+
+    max-width: 650px;
+
+    width: 100%;
+
+    margin: auto;
+
+  }
+
+
+  /* mission */
+
+  .mission-layout {
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+  }
+
+
+  .belief-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .belief-card {
+
+    min-height: 250px;
+
+  }
+
+
+  /* impact */
+
+  .impact-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .impact-card {
+
+    min-height: 260px;
+
+    text-align: center;
+
+    align-items: center;
+
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+  .about-hero {
+
+    min-height: auto;
+
+    padding:
+      145px 0
+      100px;
+
+  }
+
+
+  .about-hero-title {
+
+    font-size:
+      clamp(
+        3rem,
+        12vw,
+        5rem
+      );
+
+  }
+
+
+  .about-hero-description {
+
+    font-size: 1rem;
+
+  }
+
+
+  .about-section,
+  .mission-section,
+  .impact-section {
+
+    padding:
+      90px 0;
+
+  }
+
+
+  .section-intro {
+
+    margin-bottom: 45px;
+
+  }
+
+
+  .story-visual {
+
+    min-height: 410px;
+
+  }
+
+
+  .story-card-main {
+
+    width: 75%;
+
+    left: 5%;
+
+    min-height: 280px;
+
+  }
+
+
+  .story-card-small {
+
+    width: 155px;
+
+  }
+
+
+  .principles-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .principle-card:nth-child(1),
+  .principle-card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+
+  .principle-card {
+
+    min-height: 250px;
+
+  }
+
+
+  .about-cta-section {
+
+    padding: 80px 0;
+
+  }
+
+
+  .about-cta-box {
+
+    padding:
+      55px 25px;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+  .about-hero {
+
+    padding:
+      125px 0
+      85px;
+
+  }
+
+
+  .about-hero-title {
+
+    margin-top: 1.25rem;
+
+    font-size:
+      clamp(
+        2.7rem,
+        13vw,
+        4rem
+      );
+
+    letter-spacing: -0.045em;
+
+  }
+
+
+  .about-hero-description {
+
+    line-height: 1.65;
+
+  }
+
+
+  .about-hero-actions {
+
+    flex-direction: column;
+
+    width: 100%;
+
+  }
+
+
+  .about-btn {
+
+    width: 100%;
+
+    max-width: 280px;
+
+  }
+
+
+  .about-section,
+  .mission-section,
+  .impact-section {
+
+    padding:
+      75px 0;
+
+  }
+
+
+  .section-intro h2 {
+
+    font-size:
+      clamp(
+        2.25rem,
+        10vw,
+        3rem
+      );
+
+  }
+
+
+  /* story */
+
+  .story-grid {
+
+    gap: 25px;
+
+  }
+
+
+  .story-copy .story-lead {
+
+    font-size: 1.2rem;
+
+  }
+
+
+  .story-visual {
+
+    min-height: 360px;
+
+  }
+
+
+  .story-card-main {
+
+    width: 78%;
+
+    left: 0;
+
+    top: 50px;
+
+    min-height: 250px;
+
+    padding: 25px;
+
+  }
+
+
+  .story-card-icon {
+
+    width: 48px;
+    height: 48px;
+
+    margin:
+      30px 0 18px;
+
+  }
+
+
+  .story-card-small {
+
+    width: 135px;
+
+    height: 85px;
+
+    right: 0;
+
+    top: 10px;
+
+    padding: 15px;
+
+  }
+
+
+  .story-card-small.second {
+
+    right: 0;
+
+    bottom: 10px;
+
+  }
+
+
+  /* mission */
+
+  .mission-layout {
+
+    gap: 25px;
+
+    margin-bottom: 50px;
+
+  }
+
+
+  .mission-heading h2 {
+
+    font-size:
+      clamp(
+        2.5rem,
+        11vw,
+        3.5rem
+      );
+
+  }
+
+
+  .mission-copy .mission-large {
+
+    font-size: 1.15rem;
+
+  }
+
+
+  .belief-card {
+
+    min-height: 240px;
+
+    padding: 25px;
+
+  }
+
+
+  .belief-icon {
+
+    margin:
+      35px 0 20px;
+
+  }
+
+
+  /* principles */
+
+  .principle-card {
+
+    min-height: 230px;
+
+    padding: 25px;
+
+  }
+
+
+  .principle-card h3 {
+
+    font-size: 1.3rem;
+
+  }
+
+
+  /* impact */
+
+  .impact-heading {
+
+    margin-bottom: 40px;
+
+  }
+
+
+  .impact-heading h2 {
+
+    font-size:
+      clamp(
+        2.7rem,
+        11vw,
+        3.6rem
+      );
+
+  }
+
+
+  .impact-card {
+
+    min-height: 240px;
+
+    padding: 25px;
+
+  }
+
+
+  .impact-number {
+
+    font-size:
+      clamp(
+        3.5rem,
+        18vw,
+        5rem
+      );
+
+  }
+
+
+  .impact-message {
+
+    margin-top: 40px;
+
+    text-align: center;
+
+  }
+
+
+  /* CTA */
+
+  .about-cta-box {
+
+    padding:
+      45px 20px;
+
+    border-radius:
+      var(--radius-lg);
+
+  }
+
+
+  .about-cta-box h2 {
+
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3.2rem
+      );
+
+  }
+
+
+  .about-cta-actions {
+
+    flex-direction: column;
+
+  }
+
+
+  .about-cta-actions .btn {
+
+    width: 100%;
+
+  }
+
+
+  .hero-scroll-indicator {
+
+    display: none;
+
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+
+  .about-hero-title {
+
+    font-size: 2.6rem;
+
+  }
+
+
+  .story-visual {
+
+    min-height: 330px;
+
+  }
+
+
+  .story-card-main {
+
+    width: 76%;
+
+  }
+
+
+  .story-card-small {
+
+    width: 120px;
+
+  }
+
+
+  .belief-card {
+
+    padding: 22px;
+
+  }
+
+
+  .principle-card {
+
+    padding: 22px;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-scroll-indicator span,
+  .impact-dot {
+
+    animation: none;
+
+  }
+
+  .principle-card {
+
+    transition: none;
+
+  }
+
+}

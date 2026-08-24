@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Account — Customer Support SaaS</title>
+
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/signup.css">
+</head>
+
+<body>
+
+  <main class="auth-page">
+
+    <!-- =========================================================
+         LEFT IMAGE PANEL
+    ========================================================== -->
+    <section class="auth-visual" aria-label="Customer support">
+
+      <img
+        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+        alt="Customer support team collaborating"
+        class="auth-visual-image"
+      >
+
+      <div class="auth-visual-overlay">
+
+        <a href="../index.html" class="auth-brand">
+          <img
+            src="../logo_trimmed.webp"
+            alt="Customer Support SaaS"
+          >
+        </a>
+
+        <div class="auth-visual-copy">
+
+          <p class="auth-visual-eyebrow">
+            AI-POWERED CUSTOMER SUPPORT
+          </p>
+
+          <h2>
+            Build better
+            <span class="font-serif-italic">support.</span>
+          </h2>
+
+          <p>
+            Bring conversations, automation and intelligent support
+            agents together in one powerful ecosystem.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         RIGHT CONTENT
+    ========================================================== -->
+    <section class="auth-content">
+
+      <a href="../index.html" class="auth-back">
+        <span aria-hidden="true">←</span>
+        Back to Home
+      </a>
+
+      <div class="auth-container">
+
+        <!-- HEADER -->
+        <div class="auth-header">
+
+          <a href="../index.html" class="auth-logo">
+            <img
+              src="../logo_trimmed.webp"
+              alt="Customer Support SaaS"
+            >
+          </a>
+
+          <h1>Create account</h1>
+
+          <p>
+            Get started with your Customer Support SaaS account.
+          </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             SIGNUP FORM
+        ====================================================== -->
+        <form
+          class="auth-form"
+          id="signup-form"
+          novalidate
+        >
+
+          <!-- NAME -->
+          <div class="auth-field">
+
+            <label for="signup-name">
+              Full name <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="signup-name"
+              name="name"
+              class="auth-input"
+              placeholder="Your full name"
+              autocomplete="name"
+            >
+
+            <div
+              class="auth-error"
+              id="error-name"
+            ></div>
+
+          </div>
+
+
+          <!-- ROLE -->
+          <div class="auth-field">
+
+            <label for="signup-role-trigger">
+              Role <span class="required">*</span>
+            </label>
+
+            <div
+              class="custom-select"
+              id="role-select-wrapper"
+            >
+
+              <button
+                type="button"
+                class="custom-select-trigger"
+                id="signup-role-trigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+
+                <span>Select your role</span>
+
+                <svg
+                  class="select-arrow"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+              </button>
+
+              <div
+                class="custom-options"
+                id="signup-role-options"
+                role="listbox"
+              >
+
+                <button
+                  type="button"
+                  class="custom-option"
+                  data-value="user"
+                  role="option"
+                >
+                  User
+                </button>
+
+                <button
+                  type="button"
+                  class="custom-option"
+                  data-value="admin"
+                  role="option"
+                >
+                  Admin
+                </button>
+
+              </div>
+
+            </div>
+
+            <input
+              type="hidden"
+              id="signup-role"
+              name="role"
+            >
+
+            <div
+              class="auth-error"
+              id="error-role"
+            ></div>
+
+          </div>
+
+
+          <!-- EMAIL -->
+          <div class="auth-field">
+
+            <label for="signup-email">
+              Email <span class="required">*</span>
+            </label>
+
+            <input
+              type="email"
+              id="signup-email"
+              name="email"
+              class="auth-input"
+              placeholder="name@company.com"
+              autocomplete="email"
+            >
+
+            <div
+              class="auth-error"
+              id="error-email"
+            ></div>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+          <div class="auth-field">
+
+            <label for="signup-password">
+              Password <span class="required">*</span>
+            </label>
+
+            <div class="password-wrapper">
+
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                class="auth-input"
+                placeholder="Create a password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="toggle-password"
+                aria-label="Show password"
+              >
+
+                <svg
+                  class="eye-open"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+
+                <svg
+                  class="eye-closed"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 3l18 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a18 18 0 0 1-3.1 3.6M6.1 6.7C3.5 8.5 2 12 2 12s3.5 6 10 6c1.4 0 2.6-.3 3.7-.7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+
+              </button>
+
+            </div>
+
+            <div
+              class="auth-error"
+              id="error-password"
+            ></div>
+
+          </div>
+
+
+          <!-- CONFIRM PASSWORD -->
+          <div class="auth-field">
+
+            <label for="signup-confirm-password">
+              Confirm password <span class="required">*</span>
+            </label>
+
+            <div class="password-wrapper">
+
+              <input
+                type="password"
+                id="signup-confirm-password"
+                name="confirm-password"
+                class="auth-input"
+                placeholder="Confirm your password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="toggle-confirm-password"
+                aria-label="Show password"
+              >
+
+                <svg
+                  class="eye-open"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+
+                <svg
+                  class="eye-closed"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 3l18 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a18 18 0 0 1-3.1 3.6M6.1 6.7C3.5 8.5 2 12 2 12s3.5 6 10 6c1.4 0 2.6-.3 3.7-.7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+
+              </button>
+
+            </div>
+
+            <div
+              class="auth-error"
+              id="error-confirm-password"
+            ></div>
+
+          </div>
+
+
+          <!-- TERMS -->
+          <label class="terms-checkbox">
+
+            <input
+              type="checkbox"
+              id="signup-terms"
+            >
+
+            <span class="custom-checkbox"></span>
+
+            <span>
+              I agree to the
+              <a href="404.html">Terms of Service</a>
+              and
+              <a href="404.html">Privacy Policy</a>.
+            </span>
+
+          </label>
+
+          <div
+            class="auth-error terms-error"
+            id="error-terms"
+          ></div>
+
+
+          <!-- SUBMIT -->
+          <button
+            type="submit"
+            class="auth-submit"
+            id="signup-submit"
+          >
+
+            <span class="btn-text">
+              Create account
+            </span>
+
+            <span
+              class="spinner"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+
+
+
+          <!-- FOOTER -->
+          <p class="auth-footer">
+
+            Already have an account?
+
+            <a
+              href="login.html"
+              class="auth-link"
+            >
+              Sign in
+            </a>
+
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const form =
+        document.getElementById("signup-form");
+
+      const nameInput =
+        document.getElementById("signup-name");
+
+      const emailInput =
+        document.getElementById("signup-email");
+
+      const passwordInput =
+        document.getElementById("signup-password");
+
+      const confirmPasswordInput =
+        document.getElementById("signup-confirm-password");
+
+      const roleInput =
+        document.getElementById("signup-role");
+
+      const roleWrapper =
+        document.getElementById("role-select-wrapper");
+
+      const roleTrigger =
+        document.getElementById("signup-role-trigger");
+
+      const roleOptions =
+        roleWrapper.querySelectorAll(".custom-option");
+
+      const submitButton =
+        document.getElementById("signup-submit");
+
+
+      /* =========================================================
+         PASSWORD TOGGLE
+      ========================================================== */
+
+      function setupPasswordToggle(input, button) {
+
+        const eyeOpen =
+          button.querySelector(".eye-open");
+
+        const eyeClosed =
+          button.querySelector(".eye-closed");
+
+
+        button.addEventListener("click", () => {
+
+          const showing =
+            input.type === "text";
+
+          input.type =
+            showing ? "password" : "text";
+
+          eyeOpen.style.display =
+            showing ? "block" : "none";
+
+          eyeClosed.style.display =
+            showing ? "none" : "block";
+
+          button.setAttribute(
+            "aria-label",
+            showing ? "Show password" : "Hide password"
+          );
+
+          input.focus();
+
+        });
+
+      }
+
+
+      setupPasswordToggle(
+        passwordInput,
+        document.getElementById("toggle-password")
+      );
+
+      setupPasswordToggle(
+        confirmPasswordInput,
+        document.getElementById("toggle-confirm-password")
+      );
+
+
+      /* =========================================================
+         ROLE DROPDOWN
+      ========================================================== */
+
+      roleTrigger.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        const isOpen =
+          roleWrapper.classList.toggle("open");
+
+        roleTrigger.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+      });
+
+
+      roleOptions.forEach(option => {
+
+        option.addEventListener("click", event => {
+
+          event.stopPropagation();
+
+          const value =
+            option.dataset.value;
+
+          roleInput.value = value;
+
+          roleTrigger.querySelector("span").textContent =
+            option.textContent.trim();
+
+          roleOptions.forEach(item => {
+            item.classList.remove("selected");
+          });
+
+          option.classList.add("selected");
+
+          roleWrapper.classList.remove("open");
+
+          roleTrigger.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          roleTrigger.classList.remove("error");
+
+          document.getElementById(
+            "error-role"
+          ).textContent = "";
+
+        });
+
+      });
+
+
+      document.addEventListener("click", () => {
+
+        roleWrapper.classList.remove("open");
+
+        roleTrigger.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+
+      /* =========================================================
+         CLEAR ERRORS
+      ========================================================== */
+
+      const fields = [
+        ["signup-name", "error-name"],
+        ["signup-email", "error-email"],
+        ["signup-password", "error-password"],
+        ["signup-confirm-password", "error-confirm-password"]
+      ];
+
+
+      fields.forEach(([field, error]) => {
+
+        document.getElementById(field)
+          .addEventListener("input", () => {
+
+            document
+              .getElementById(field)
+              .classList.remove("error");
+
+            document
+              .getElementById(error)
+              .textContent = "";
+
+          });
+
+      });
+
+
+      /* =========================================================
+         SIGNUP
+      ========================================================== */
+
+      form.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        let valid = true;
+
+
+        const name =
+          nameInput.value.trim();
+
+        const email =
+          emailInput.value.trim();
+
+        const password =
+          passwordInput.value.trim();
+
+        const confirmPassword =
+          confirmPasswordInput.value.trim();
+
+        const role =
+          roleInput.value.trim();
+
+        const terms =
+          document.getElementById("signup-terms").checked;
+
+
+        /* NAME */
+
+        if (!name) {
+
+          nameInput.classList.add("error");
+
+          document.getElementById(
+            "error-name"
+          ).textContent =
+            "Full name is required.";
+
+          valid = false;
+
+        }
+
+
+        /* EMAIL */
+
+        if (!email) {
+
+          emailInput.classList.add("error");
+
+          document.getElementById(
+            "error-email"
+          ).textContent =
+            "Email is required.";
+
+          valid = false;
+
+        } else if (
+          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        ) {
+
+          emailInput.classList.add("error");
+
+          document.getElementById(
+            "error-email"
+          ).textContent =
+            "Please enter a valid email address.";
+
+          valid = false;
+
+        }
+
+
+        /* ROLE */
+
+        if (!role) {
+
+          roleTrigger.classList.add("error");
+
+          document.getElementById(
+            "error-role"
+          ).textContent =
+            "Please select a role.";
+
+          valid = false;
+
+        }
+
+
+        /* PASSWORD */
+
+        if (!password) {
+
+          passwordInput.classList.add("error");
+
+          document.getElementById(
+            "error-password"
+          ).textContent =
+            "Password is required.";
+
+          valid = false;
+
+        } else if (password.length < 6) {
+
+          passwordInput.classList.add("error");
+
+          document.getElementById(
+            "error-password"
+          ).textContent =
+            "Password must contain at least 6 characters.";
+
+          valid = false;
+
+        }
+
+
+        /* CONFIRM PASSWORD */
+
+        if (!confirmPassword) {
+
+          confirmPasswordInput.classList.add("error");
+
+          document.getElementById(
+            "error-confirm-password"
+          ).textContent =
+            "Please confirm your password.";
+
+          valid = false;
+
+        } else if (password !== confirmPassword) {
+
+          confirmPasswordInput.classList.add("error");
+
+          document.getElementById(
+            "error-confirm-password"
+          ).textContent =
+            "Passwords do not match.";
+
+          valid = false;
+
+        }
+
+
+        /* TERMS */
+
+        if (!terms) {
+
+          document.getElementById(
+            "error-terms"
+          ).textContent =
+            "Please accept the Terms of Service and Privacy Policy.";
+
+          valid = false;
+
+        }
+
+
+        if (!valid) return;
+
+
+        submitButton.classList.add("loading");
+
+        submitButton.disabled = true;
+
+
+        /*
+          Simulated account creation.
+          Replace with backend/API authentication later.
+        */
+
+        setTimeout(() => {
+
+          const username =
+            email.split("@")[0];
+
+          const displayName =
+            name ||
+            username.charAt(0).toUpperCase() +
+            username.slice(1);
+
+
+          localStorage.setItem(
+            "auth_email",
+            email
+          );
+
+          localStorage.setItem(
+            "auth_username",
+            displayName
+          );
+
+          localStorage.setItem(
+            "auth_role",
+            role
+          );
+
+          localStorage.setItem(
+            "auth_remember",
+            "true"
+          );
+
+
+          const target =
+            role === "admin"
+              ? "admin.html"
+              : "user.html";
+
+
+          window.location.href = target;
+
+        }, 700);
+
+      });
+
+
+      /* =========================================================
+         GSAP
+      ========================================================== */
+
+      if (window.gsap) {
+
+        gsap.from(".auth-content", {
+          opacity: 0,
+          x: 30,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+
+        gsap.from(".auth-visual-copy", {
+          opacity: 0,
+          y: 25,
+          duration: 0.9,
+          delay: 0.15,
+          ease: "power3.out"
+        });
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact - Customer Support SaaS</title>
+
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/contact.css">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+
+  <header class="site-header" id="site-header">
+    <a href="../index.html" class="brand-logo" aria-label="Go to homepage">
+      <img src="../logo_trimmed.webp" alt="Customer Support SaaS Logo">
+    </a>
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="btn btn-secondary">Log in</a>
+      <a href="signup.html" class="btn btn-primary">
+        Join the waitlist
+        <i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i>
+      </a>
+    </div>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+  </header>
+
+
+  <!-- =========================================================
+       MOBILE NAV
+  ========================================================== -->
+
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="mobile-header-actions">
+      <a href="login.html" class="btn btn-secondary">Log in</a>
+      <a href="signup.html" class="btn btn-primary">
+        Join the waitlist <i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main>
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
+    <section class="contact-hero">
+
+      <div class="container">
+
+        <div class="contact-hero-content">
+
+          <span class="contact-eyebrow">
+            GET IN TOUCH
+          </span>
+
+          <h1>
+            Let's build better
+            <span class="font-serif-italic">customer support.</span>
+          </h1>
+
+          <p>
+            Have a question about our platform, want to discuss
+            your support operations, or simply want to learn more?
+            We'd love to hear from you.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         CONTACT CONTENT
+    ======================================================== -->
+
+    <section class="contact-main">
+
+      <div class="container">
+
+        <div class="contact-layout">
+
+          <!-- LEFT SIDE -->
+
+          <div class="contact-info">
+
+            <div class="contact-info-header">
+
+              <span class="section-label">
+                CONTACT US
+              </span>
+
+              <h2>
+                How can we
+                <span class="font-serif-italic">help?</span>
+              </h2>
+
+              <p>
+                Whether you're evaluating customer support
+                solutions or already have a question, our team
+                is here to help.
+              </p>
+
+            </div>
+
+
+            <div class="contact-details">
+
+              <a
+                href="../404.html"
+                class="contact-detail"
+              >
+
+                <div class="contact-detail-icon">
+                  @
+                </div>
+
+                <div>
+                  <span>Email us</span>
+                  <strong>hello@example.com</strong>
+                </div>
+
+              </a>
+
+
+              <a
+                href="../404.html"
+                class="contact-detail"
+              >
+
+                <div class="contact-detail-icon">
+                  +
+                </div>
+
+                <div>
+                  <span>Call us</span>
+                  <strong>+91 99999 99999</strong>
+                </div>
+
+              </a>
+
+
+              <div class="contact-detail">
+
+                <div class="contact-detail-icon">
+                  ↗
+                </div>
+
+                <div>
+                  <span>Response time</span>
+                  <strong>Usually within 24 hours</strong>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="contact-note">
+
+              <span class="contact-note-mark">
+                ✦
+              </span>
+
+              <p>
+                We typically respond within one business day.
+                For urgent questions, give us a call.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- RIGHT SIDE FORM -->
+
+          <div class="contact-form-wrapper">
+
+            <form
+              class="contact-form"
+              id="contact-form"
+              novalidate
+            >
+
+              <div class="form-header">
+
+                <span class="section-label">
+                  SEND A MESSAGE
+                </span>
+
+                <h3>
+                  Tell us
+                  <span class="font-serif-italic">what you need.</span>
+                </h3>
+
+              </div>
+
+
+              <div class="form-row">
+
+                <div class="form-group">
+
+                  <label for="first-name">
+                    First name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="firstName"
+                    placeholder="John"
+                    autocomplete="given-name"
+                    required
+                  >
+                  <div class="custom-warning">Please enter a valid first name.</div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="last-name">
+                    Last name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="last-name"
+                    name="lastName"
+                    placeholder="Doe"
+                    autocomplete="family-name"
+                    required
+                  >
+                  <div class="custom-warning">Please enter a valid last name.</div>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="email">
+                  Work email
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@company.com"
+                  autocomplete="email"
+                  required
+                >
+                <div class="custom-warning">Please enter a valid email address.</div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="company">
+                  Company
+                </label>
+
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Your company"
+                  autocomplete="organization"
+                  required
+                >
+                <div class="custom-warning">Please enter your company name.</div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="subject">
+                  What can we help with?
+                </label>
+
+                <div class="custom-dropdown" id="subject-dropdown" tabindex="0">
+                  <div class="custom-dropdown-header">
+                    <span class="custom-dropdown-text">Select an option</span>
+                    <i class="fa-solid fa-chevron-down custom-dropdown-icon"></i>
+                  </div>
+                  <ul class="custom-dropdown-options">
+                    <li data-value="product">Product information</li>
+                    <li data-value="demo">Request a demo</li>
+                    <li data-value="integration">Integration</li>
+                    <li data-value="pricing">Pricing</li>
+                    <li data-value="partnership">Partnership</li>
+                    <li data-value="other">Something else</li>
+                  </ul>
+                </div>
+                <input type="hidden" id="subject" name="subject" required>
+                <div class="custom-warning">Please select a subject.</div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="message">
+                  Message
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell us a little about what you're looking for..."
+                  required
+                ></textarea>
+                <div class="custom-warning">Please enter your message.</div>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="btn btn-primary form-submit"
+              >
+                Send message
+                <span class="btn-icon">↗</span>
+              </button>
+
+
+              <p class="form-disclaimer">
+                By submitting this form, you agree to be contacted
+                regarding your enquiry.
+              </p>
+
+              <div
+                class="form-success"
+                id="form-success"
+                role="status"
+                aria-live="polite"
+              >
+                <span>✓</span>
+                Thanks! Your message has been received.
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         MAP SECTION
+    ======================================================== -->
+    <section class="map-section">
+      <div class="container">
+        <div class="map-header">
+          <span class="section-label">OUR OFFICE</span>
+          <h2>
+            Visit us in
+            <span class="font-serif-italic">Salem.</span>
+          </h2>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://maps.google.com/maps?q=Stackly,%20Salem,%20Tamil%20Nadu&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         FAQ
+    ======================================================== -->
+
+    <section class="contact-faq">
+
+      <div class="container">
+
+        <div class="faq-header">
+
+          <span class="section-label">
+            FAQ
+          </span>
+
+          <h2>
+            Questions?
+            <span class="font-serif-italic">We've got answers.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="faq-grid">
+
+          <details class="faq-item">
+
+            <summary>
+              How quickly will I hear back?
+              <span>+</span>
+            </summary>
+
+            <p>
+              Our team typically responds to enquiries within
+              one business day.
+            </p>
+
+          </details>
+
+
+          <details class="faq-item">
+
+            <summary>
+              Can I request a product demo?
+              <span>+</span>
+            </summary>
+
+            <p>
+              Absolutely. Select "Request a demo" in the form
+              above and our team will get in touch with you.
+            </p>
+
+          </details>
+
+
+          <details class="faq-item">
+
+            <summary>
+              Do you support integrations?
+              <span>+</span>
+            </summary>
+
+            <p>
+              Yes. Our platform is designed to work alongside
+              the tools and systems your support team already uses.
+            </p>
+
+          </details>
+
+
+          <details class="faq-item">
+
+            <summary>
+              Can I talk to someone about pricing?
+              <span>+</span>
+            </summary>
+
+            <p>
+              Yes. Send us your requirements and we'll help you
+              understand which solution fits your support operation.
+            </p>
+
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         CTA
+    ======================================================== -->
+
+    <section class="contact-cta">
+
+      <div class="container">
+
+        <div class="contact-cta-inner">
+
+          <div>
+
+            <span class="section-label">
+              READY WHEN YOU ARE
+            </span>
+
+            <h2>
+              Let's make support
+              <span class="font-serif-italic">effortless.</span>
+            </h2>
+
+          </div>
+
+          <a
+            href="signup.html"
+            class="btn btn-primary contact-cta-button"
+          >
+            Join the waitlist
+            <span class="btn-icon">↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo" aria-label="Go to homepage">
+            <img src="../logo_trimmed.webp" alt="Customer Support SaaS Logo">
+          </a>
+          <p>We resolve 60-80% of your customers' complex support issues via phone, email, and web, reducing your costs by over 50%</p>
+          <div class="social-icons">
+            <a href="../404.html" aria-label="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+            <a href="../404.html" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="../404.html" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="../404.html" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="../404.html">Leadership</a></li>
+            <li><a href="../404.html">Customers</a></li>
+            <li><a href="../404.html">Press</a></li>
+            <li><a href="../404.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../404.html">Privacy Policy</a></li>
+            <li><a href="../404.html">Terms of Service</a></li>
+            <li><a href="../404.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Customer Support SaaS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================
+       SCRIPTS
+  ========================================================== -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script src="../js/common.js"></script>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      /*
+       * Hero animation
+       */
+
+      if (window.gsap) {
+
+        gsap.from(".contact-hero-content > *", {
+          y: 35,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power3.out"
+        });
+
+        gsap.from(".contact-info", {
+          x: -35,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-main",
+            start: "top 80%"
+          }
+        });
+
+        gsap.from(".contact-form-wrapper", {
+          x: 35,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.25,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-main",
+            start: "top 80%"
+          }
+        });
+
+        gsap.from(".faq-item", {
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".contact-faq",
+            start: "top 80%"
+          }
+        });
+
+        gsap.from(".map-section", {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".map-section",
+            start: "top 85%"
+          }
+        });
+
+      }
+
+
+      /*
+       * Custom Dropdown Logic
+       */
+      const subjectDropdown = document.getElementById("subject-dropdown");
+      const subjectInput = document.getElementById("subject");
+      
+      if (subjectDropdown && subjectInput) {
+        const textElement = subjectDropdown.querySelector(".custom-dropdown-text");
+        const options = subjectDropdown.querySelectorAll(".custom-dropdown-options li");
+
+        subjectDropdown.addEventListener("click", () => {
+          subjectDropdown.classList.toggle("open");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!subjectDropdown.contains(e.target)) {
+            subjectDropdown.classList.remove("open");
+          }
+        });
+
+        options.forEach(option => {
+          option.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const value = option.getAttribute("data-value");
+            const text = option.textContent;
+
+            textElement.textContent = text;
+            subjectInput.value = value;
+            
+            // Fire change event to clear validation warnings
+            subjectInput.dispatchEvent(new Event("change"));
+
+            options.forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+
+            subjectDropdown.classList.remove("open");
+          });
+        });
+      }
+
+      /*
+       * Contact form
+       *
+       * This is frontend-only for now.
+       * Replace with your backend/API submission later.
+       */
+
+      const form = document.getElementById("contact-form");
+      const successMessage = document.getElementById("form-success");
+
+      // Reset form when returning via back button
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted && form) {
+          form.reset();
+          form.querySelectorAll(".form-group").forEach(g => g.classList.remove("show-warning"));
+        }
+      });
+
+      if (form) {
+        
+        form.addEventListener("reset", () => {
+          if (subjectDropdown) {
+             subjectDropdown.querySelector(".custom-dropdown-text").textContent = "Select an option";
+             subjectDropdown.querySelectorAll(".custom-dropdown-options li").forEach(opt => opt.classList.remove("selected"));
+          }
+        });
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          let isValid = true;
+          const groups = form.querySelectorAll(".form-group");
+
+          groups.forEach((group) => {
+            const input = group.querySelector("input, select, textarea");
+            if (input && (!input.value.trim() || !input.checkValidity())) {
+              isValid = false;
+              group.classList.add("show-warning");
+
+              // Remove warning on next input
+              const removeWarning = () => {
+                group.classList.remove("show-warning");
+                input.removeEventListener("input", removeWarning);
+                input.removeEventListener("change", removeWarning);
+              };
+              input.addEventListener("input", removeWarning);
+              input.addEventListener("change", removeWarning);
+            }
+          });
+
+          if (!isValid) return;
+
+          form.reset();
+          window.location.href = "../404.html";
+        });
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

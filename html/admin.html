@@ -1,0 +1,5004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard — Customer Support SaaS</title>
+
+  <style>
+    /* ============================================================
+       RESET
+    ============================================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #f6f6f6;
+      color: #111111;
+
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* ============================================================
+       VARIABLES
+    ============================================================ */
+
+    :root {
+      --sidebar-width: 250px;
+
+      --bg: #f6f6f6;
+      --surface: #ffffff;
+      --surface-soft: #fafafa;
+
+      --border: #e8e8e8;
+      --border-dark: #dddddd;
+
+      --text: #111111;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+
+      --black: #000000;
+
+      --green: #16a34a;
+      --green-soft: #ecfdf3;
+
+      --red: #dc2626;
+      --red-soft: #fef2f2;
+
+      --orange: #ea580c;
+      --orange-soft: #fff7ed;
+
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+
+      --shadow-sm:
+        0 1px 3px rgba(0, 0, 0, 0.05);
+
+      --shadow-md:
+        0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+
+    /* ============================================================
+       APP
+    ============================================================ */
+
+    .admin-app {
+      min-height: 100vh;
+      display: flex;
+    }
+
+
+    /* ============================================================
+       SIDEBAR
+    ============================================================ */
+
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100vh;
+
+      position: fixed;
+      left: 0;
+      top: 0;
+
+      background: #ffffff;
+
+      border-right: 1px solid var(--border);
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 22px 14px;
+
+      z-index: 1000;
+
+      transition:
+        width 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .sidebar-brand {
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 12px;
+
+      margin-bottom: 24px;
+
+      cursor: pointer;
+    }
+
+    .brand-logo {
+      height: 28px;
+      width: auto;
+
+      filter: brightness(0);
+
+      object-fit: contain;
+    }
+
+    .brand-name {
+      margin-left: 10px;
+
+      font-size: 17px;
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+
+    /* ============================================================
+       SIDEBAR USER
+    ============================================================ */
+
+    .sidebar-user {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 10px 12px;
+
+      background: #f8f8f8;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      margin-bottom: 20px;
+    }
+
+    .user-avatar {
+      width: 34px;
+      height: 34px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #111111;
+      color: #ffffff;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .user-details {
+      min-width: 0;
+    }
+
+    .user-details strong {
+      display: block;
+
+      font-size: 13px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-details span {
+      display: block;
+
+      font-size: 11px;
+
+      color: var(--text-muted);
+
+      margin-top: 2px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+
+      gap: 4px;
+
+      flex: 1;
+    }
+
+    .nav-label-heading {
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.1em;
+
+      text-transform: uppercase;
+
+      color: #aaaaaa;
+
+      padding: 8px 12px 7px;
+
+      margin-top: 4px;
+    }
+
+    .nav-item,
+    .logout-btn {
+      width: 100%;
+
+      border: 0;
+
+      background: transparent;
+
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
+      padding: 11px 12px;
+
+      border-radius: 9px;
+
+      color: #737373;
+
+      font-size: 13px;
+
+      text-align: left;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .nav-item:hover,
+    .logout-btn:hover {
+      background: #f5f5f5;
+      color: #111111;
+    }
+
+    .nav-item.active {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .nav-icon {
+      width: 20px;
+
+      display: flex;
+      justify-content: center;
+
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .nav-label {
+      white-space: nowrap;
+    }
+
+    .nav-count {
+      margin-left: auto;
+
+      min-width: 20px;
+      height: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 20px;
+
+      background: #eeeeee;
+      color: #555555;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .nav-item.active .nav-count {
+      background: rgba(255,255,255,0.18);
+      color: #ffffff;
+    }
+
+
+    /* ============================================================
+       SIDEBAR FOOTER
+    ============================================================ */
+
+    .sidebar-footer {
+      padding-top: 12px;
+
+      border-top: 1px solid var(--border);
+    }
+
+
+    /* ============================================================
+       SIDEBAR COLLAPSED
+    ============================================================ */
+
+    .sidebar.collapsed {
+      width: 76px;
+    }
+
+    .sidebar.collapsed .brand-name,
+    .sidebar.collapsed .user-details,
+    .sidebar.collapsed .nav-label,
+    .sidebar.collapsed .nav-count {
+      display: none;
+    }
+
+    .sidebar.collapsed .sidebar-brand,
+    .sidebar.collapsed .sidebar-user {
+      justify-content: center;
+    }
+
+    .sidebar.collapsed .nav-item,
+    .sidebar.collapsed .logout-btn {
+      justify-content: center;
+    }
+
+    .sidebar.collapsed .nav-label-heading {
+      display: none;
+    }
+
+
+    /* ============================================================
+       MAIN CONTENT
+    ============================================================ */
+
+    .main-content {
+      width: calc(100% - var(--sidebar-width));
+
+      margin-left: var(--sidebar-width);
+
+      min-height: 100vh;
+
+      padding: 28px 34px;
+
+      transition:
+        margin-left 0.3s ease,
+        width 0.3s ease;
+    }
+
+    .sidebar.collapsed ~ .main-content {
+      width: calc(100% - 76px);
+      margin-left: 76px;
+    }
+
+
+    /* ============================================================
+       TOP HEADER
+    ============================================================ */
+
+    .page-header {
+      min-height: 54px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 28px;
+    }
+
+    .page-title-area h1 {
+      font-size: 25px;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 4px;
+    }
+
+    .page-title-area p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+    }
+
+    .header-date {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .sidebar-toggle {
+      width: 38px;
+      height: 38px;
+
+      border: 1px solid var(--border);
+
+      background: #ffffff;
+
+      border-radius: 9px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 17px;
+
+      transition: background 0.2s ease;
+    }
+
+    .sidebar-toggle:hover {
+      background: #f4f4f4;
+    }
+
+
+    /* ============================================================
+       SECTION CONTENT
+    ============================================================ */
+
+    .section-content {
+      display: none;
+
+      animation: sectionEnter 0.35s ease;
+    }
+
+    .section-content.active {
+      display: block;
+    }
+
+    @keyframes sectionEnter {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* ============================================================
+       SECTION HEADER
+    ============================================================ */
+
+    .content-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      margin-bottom: 20px;
+    }
+
+    .content-heading h2 {
+      font-size: 19px;
+
+      letter-spacing: -0.025em;
+
+      margin-bottom: 4px;
+    }
+
+    .content-heading p {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .heading-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+
+    .btn {
+      border: 1px solid var(--border);
+
+      background: #ffffff;
+
+      color: #111111;
+
+      border-radius: 8px;
+
+      padding: 9px 13px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #f4f4f4;
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      background: #111111;
+      border-color: #111111;
+      color: #ffffff;
+    }
+
+    .btn-dark:hover {
+      background: #333333;
+    }
+
+
+    /* ============================================================
+       STAT CARDS
+    ============================================================ */
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 14px;
+
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: #ffffff;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      padding: 18px;
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-label {
+      font-size: 11px;
+
+      color: var(--text-secondary);
+
+      margin-bottom: 9px;
+    }
+
+    .stat-value {
+      font-size: 27px;
+
+      line-height: 1;
+
+      font-weight: 700;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 8px;
+    }
+
+    .stat-change {
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .stat-change.negative {
+      color: var(--red);
+    }
+
+
+    /* ============================================================
+       CARD GRID
+    ============================================================ */
+
+    .grid-2 {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 16px;
+
+      margin-bottom: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 16px;
+
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      box-shadow: var(--shadow-sm);
+
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-header h3 {
+      font-size: 13px;
+
+      margin: 0;
+
+      letter-spacing: -0.01em;
+    }
+
+    .card-header span {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+
+    /* ============================================================
+       CHARTS
+    ============================================================ */
+
+    .chart-container {
+      position: relative;
+
+      height: 250px;
+
+      padding-top: 10px;
+    }
+
+    .line-chart {
+      width: 100%;
+      height: 100%;
+    }
+
+    .chart-grid-lines line {
+      stroke: #eeeeee;
+      stroke-width: 1;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: #111111;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+
+      animation: drawChart 1.6s ease forwards;
+    }
+
+    @keyframes drawChart {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .chart-area {
+      fill: rgba(0,0,0,0.045);
+    }
+
+    .chart-point {
+      fill: #111111;
+    }
+
+
+    /* ============================================================
+       BAR CHART
+    ============================================================ */
+
+    .bar-chart {
+      height: 250px;
+
+      display: flex;
+      align-items: flex-end;
+
+      gap: 15px;
+
+      padding: 20px 5px 5px;
+    }
+
+    .bar-group {
+      flex: 1;
+
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+
+      gap: 8px;
+    }
+
+    .bar {
+      width: 100%;
+      max-width: 35px;
+
+      background: #111111;
+
+      border-radius: 5px 5px 0 0;
+
+      transform-origin: bottom;
+
+      animation: barRise 0.9s ease backwards;
+    }
+
+    .bar:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    @keyframes barRise {
+      from {
+        transform: scaleY(0);
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    .bar-label {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+
+    /* ============================================================
+       DONUT
+    ============================================================ */
+
+    .donut-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 30px;
+
+      min-height: 220px;
+    }
+
+    .donut {
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      background:
+        conic-gradient(
+          #111111 0deg 252deg,
+          #777777 252deg 324deg,
+          #dddddd 324deg 360deg
+        );
+
+      position: relative;
+    }
+
+    .donut::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 28px;
+
+      background: #ffffff;
+
+      border-radius: 50%;
+    }
+
+    .donut-center {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      font-size: 11px;
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #111111;
+    }
+
+    .legend-dot.gray {
+      background: #777777;
+    }
+
+    .legend-dot.light {
+      background: #dddddd;
+    }
+
+
+    /* ============================================================
+       ACTIVITY
+    ============================================================ */
+
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .activity-item {
+      display: flex;
+
+      gap: 12px;
+
+      padding: 13px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .activity-item:last-child {
+      border-bottom: 0;
+    }
+
+    .activity-icon {
+      width: 32px;
+      height: 32px;
+
+      flex-shrink: 0;
+
+      border-radius: 8px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #f1f1f1;
+
+      font-size: 13px;
+    }
+
+    .activity-text {
+      flex: 1;
+    }
+
+    .activity-text strong {
+      display: block;
+
+      font-size: 12px;
+
+      margin-bottom: 2px;
+    }
+
+    .activity-text span {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+
+    /* ============================================================
+       TABLE
+    ============================================================ */
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 600px;
+    }
+
+    th {
+      text-align: left;
+
+      padding: 12px 16px;
+
+      background: #fafafa;
+
+      border-bottom: 1px solid var(--border);
+
+      color: var(--text-muted);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 14px 16px;
+
+      border-bottom: 1px solid var(--border);
+
+      font-size: 12px;
+    }
+
+    tbody tr {
+      transition: background 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background: #fafafa;
+    }
+
+
+    /* ============================================================
+       AVATARS
+    ============================================================ */
+
+    .person {
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+
+      border-radius: 50%;
+
+      background: #eeeeee;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 10px;
+
+      font-weight: 700;
+    }
+
+    .person-name strong {
+      display: block;
+
+      font-size: 12px;
+    }
+
+    .person-name span {
+      display: block;
+
+      color: var(--text-muted);
+
+      font-size: 10px;
+    }
+
+
+    /* ============================================================
+       BADGES
+    ============================================================ */
+
+    .badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      padding: 5px 8px;
+
+      border-radius: 20px;
+
+      font-size: 10px;
+
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .badge-red {
+      background: var(--red-soft);
+      color: var(--red);
+    }
+
+    .badge-orange {
+      background: var(--orange-soft);
+      color: var(--orange);
+    }
+
+    .badge-blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .badge-purple {
+      background: var(--purple-soft);
+      color: var(--purple);
+    }
+
+
+    /* ============================================================
+       CUSTOMER HEALTH
+    ============================================================ */
+
+    .health-score {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .health-bar {
+      width: 70px;
+      height: 5px;
+
+      background: #eeeeee;
+
+      border-radius: 10px;
+
+      overflow: hidden;
+    }
+
+    .health-fill {
+      height: 100%;
+
+      background: #111111;
+
+      border-radius: inherit;
+    }
+
+
+    /* ============================================================
+       CONVERSATIONS
+    ============================================================ */
+
+    .conversation-layout {
+      display: grid;
+
+      grid-template-columns: 320px 1fr;
+
+      min-height: 520px;
+    }
+
+    .conversation-list {
+      border-right: 1px solid var(--border);
+    }
+
+    .conversation-search {
+      padding: 14px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-input {
+      width: 100%;
+
+      padding: 9px 11px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      outline: none;
+
+      font-size: 12px;
+
+      background: #fafafa;
+    }
+
+    .search-input:focus {
+      border-color: #aaaaaa;
+      background: #ffffff;
+    }
+
+    .conversation-item {
+      padding: 14px;
+
+      display: flex;
+
+      gap: 10px;
+
+      border-bottom: 1px solid var(--border);
+
+      cursor: pointer;
+
+      transition: background 0.2s ease;
+    }
+
+    .conversation-item:hover {
+      background: #fafafa;
+    }
+
+    .conversation-item.active {
+      background: #f3f3f3;
+
+      border-left: 3px solid #111111;
+    }
+
+    .conversation-info {
+      flex: 1;
+
+      min-width: 0;
+    }
+
+    .conversation-info strong {
+      display: block;
+
+      font-size: 12px;
+
+      margin-bottom: 3px;
+    }
+
+    .conversation-info p {
+      color: var(--text-muted);
+
+      font-size: 10px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+    .conversation-time {
+      font-size: 9px;
+      color: var(--text-muted);
+    }
+
+
+    /* ============================================================
+       CHAT WINDOW
+    ============================================================ */
+
+    .chat-window {
+      display: flex;
+      flex-direction: column;
+
+      background: #ffffff;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chat-person {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .online-dot {
+      width: 7px;
+      height: 7px;
+
+      background: var(--green);
+
+      border-radius: 50%;
+    }
+
+    .chat-body {
+      flex: 1;
+
+      padding: 24px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 15px;
+
+      background: #fafafa;
+    }
+
+    .message {
+      max-width: 70%;
+
+      padding: 11px 14px;
+
+      border-radius: 10px;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+    .message.customer {
+      background: #ffffff;
+
+      border: 1px solid var(--border);
+
+      align-self: flex-start;
+    }
+
+    .message.agent {
+      background: #111111;
+
+      color: #ffffff;
+
+      align-self: flex-end;
+    }
+
+    .ai-response {
+      max-width: 80%;
+
+      padding: 14px;
+
+      background: #f1f1f1;
+
+      border: 1px dashed #cccccc;
+
+      border-radius: 10px;
+
+      font-size: 11px;
+    }
+
+    .ai-response strong {
+      display: block;
+
+      margin-bottom: 5px;
+    }
+
+    .chat-input {
+      display: flex;
+
+      gap: 8px;
+
+      padding: 14px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .chat-input input {
+      flex: 1;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      padding: 10px;
+
+      outline: none;
+    }
+
+
+    /* ============================================================
+       AGENTS
+    ============================================================ */
+
+    .agent-card {
+      padding: 18px;
+    }
+
+    .agent-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .agent-profile {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .large-avatar {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #111111;
+      color: white;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .agent-name strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .agent-name span {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .productivity {
+      margin-top: 18px;
+    }
+
+    .productivity-row {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-bottom: 6px;
+
+      font-size: 10px;
+    }
+
+    .progress {
+      height: 6px;
+
+      background: #eeeeee;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+
+      background: #111111;
+
+      border-radius: inherit;
+    }
+
+
+    /* ============================================================
+       AUTOMATION
+    ============================================================ */
+
+    .automation-card {
+      padding: 18px;
+    }
+
+    .automation-icon {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #111111;
+      color: white;
+
+      margin-bottom: 14px;
+    }
+
+    .automation-card h3 {
+      font-size: 14px;
+
+      margin-bottom: 5px;
+    }
+
+    .automation-card p {
+      color: var(--text-secondary);
+
+      font-size: 11px;
+
+      line-height: 1.6;
+
+      margin-bottom: 15px;
+    }
+
+    .automation-footer {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding-top: 12px;
+
+      border-top: 1px solid var(--border);
+    }
+
+
+    /* ============================================================
+       TOGGLE
+    ============================================================ */
+
+    .toggle {
+      width: 40px;
+      height: 22px;
+
+      border: 0;
+
+      background: #dddddd;
+
+      border-radius: 20px;
+
+      position: relative;
+
+      transition: background 0.2s ease;
+    }
+
+    .toggle::after {
+      content: "";
+
+      position: absolute;
+
+      width: 16px;
+      height: 16px;
+
+      top: 3px;
+      left: 3px;
+
+      background: #ffffff;
+
+      border-radius: 50%;
+
+      transition: transform 0.2s ease;
+    }
+
+    .toggle.active {
+      background: #111111;
+    }
+
+    .toggle.active::after {
+      transform: translateX(18px);
+    }
+
+
+    /* ============================================================
+       SETTINGS
+    ============================================================ */
+
+    .settings-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .setting-row {
+      padding: 18px 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border);
+
+      gap: 20px;
+    }
+
+    .setting-row:last-child {
+      border-bottom: 0;
+    }
+
+    .setting-info strong {
+      display: block;
+
+      font-size: 12px;
+
+      margin-bottom: 3px;
+    }
+
+    .setting-info span {
+      display: block;
+
+      color: var(--text-muted);
+
+      font-size: 10px;
+    }
+
+    .setting-select {
+      padding: 8px 10px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      background: #ffffff;
+
+      font-size: 11px;
+
+      min-width: 130px;
+    }
+
+
+    /* ============================================================
+       OVERLAY
+    ============================================================ */
+
+    .sidebar-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0,0,0,0.35);
+
+      z-index: 900;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    /* ============================================================
+       MOBILE
+    ============================================================ */
+
+    @media (max-width: 1100px) {
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .conversation-layout {
+        grid-template-columns: 280px 1fr;
+      }
+    }
+
+
+    @media (max-width: 768px) {
+
+      :root {
+        --sidebar-width: 250px;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+
+        box-shadow: 10px 0 40px rgba(0,0,0,0.08);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .sidebar.collapsed {
+        width: var(--sidebar-width);
+      }
+
+      .sidebar.collapsed .brand-name,
+      .sidebar.collapsed .user-details,
+      .sidebar.collapsed .nav-label,
+      .sidebar.collapsed .nav-count {
+        display: block;
+      }
+
+      .sidebar.collapsed .sidebar-brand,
+      .sidebar.collapsed .sidebar-user {
+        justify-content: flex-start;
+      }
+
+      .sidebar.collapsed .nav-item,
+      .sidebar.collapsed .logout-btn {
+        justify-content: flex-start;
+      }
+
+      .main-content,
+      .sidebar.collapsed ~ .main-content {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 20px 15px;
+      }
+
+      .page-header {
+        margin-bottom: 22px;
+      }
+
+      .page-title-area h1 {
+        font-size: 21px;
+      }
+
+      .header-date {
+        display: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 14px;
+      }
+
+      .stat-value {
+        font-size: 22px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .content-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+      }
+
+      .heading-actions {
+        width: 100%;
+      }
+
+      .heading-actions .btn {
+        flex: 1;
+      }
+
+      .conversation-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .conversation-list {
+        border-right: 0;
+
+        border-bottom: 1px solid var(--border);
+
+        max-height: 300px;
+
+        overflow-y: auto;
+      }
+
+      .chat-window {
+        min-height: 450px;
+      }
+
+      .donut-wrap {
+        flex-direction: column;
+
+        gap: 20px;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-card {
+        padding: 12px;
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+
+      .stat-value {
+        font-size: 20px;
+      }
+
+      .stat-change {
+        font-size: 9px;
+      }
+
+      .card-header {
+        padding: 13px;
+      }
+
+      .card-body {
+        padding: 13px;
+      }
+
+      .chart-container {
+        height: 210px;
+      }
+
+      .bar-chart {
+        gap: 7px;
+      }
+
+      .bar {
+        max-width: 24px;
+      }
+
+      .message {
+        max-width: 88%;
+      }
+
+      .setting-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .setting-select {
+        width: 100%;
+      }
+    }
+
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<div class="admin-app">
+
+
+  <!-- ==========================================================
+       SIDEBAR
+  =========================================================== -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand" id="sidebarBrand">
+
+      <img
+        src="../logo_trimmed.webp"
+        alt="Customer Support SaaS"
+        class="brand-logo"
+      >
+
+      <span class="brand-name">
+        SupportAI
+      </span>
+
+    </div>
+
+
+    <!-- USER -->
+
+    <div class="sidebar-user">
+
+      <div class="user-avatar">
+        SK
+      </div>
+
+      <div class="user-details">
+
+        <strong>
+          Sujith Kumar
+        </strong>
+
+        <span>
+          Administrator
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+      <div class="nav-label-heading">
+        Workspace
+      </div>
+
+
+      <button
+        class="nav-item active"
+        data-section="dashboard"
+      >
+        <span class="nav-icon">⌂</span>
+        <span class="nav-label">Dashboard</span>
+      </button>
+
+
+      <button
+        class="nav-item"
+        data-section="customers"
+      >
+        <span class="nav-icon">♙</span>
+        <span class="nav-label">Customers</span>
+
+        <span class="nav-count">
+          1.8k
+        </span>
+      </button>
+
+
+      <button
+        class="nav-item"
+        data-section="conversations"
+      >
+        <span class="nav-icon">☏</span>
+        <span class="nav-label">Conversations</span>
+
+        <span class="nav-count">
+          24
+        </span>
+      </button>
+
+
+      <button
+        class="nav-item"
+        data-section="analytics"
+      >
+        <span class="nav-icon">◩</span>
+        <span class="nav-label">Analytics</span>
+      </button>
+
+
+      <div class="nav-label-heading">
+        Team & AI
+      </div>
+
+
+      <button
+        class="nav-item"
+        data-section="agents"
+      >
+        <span class="nav-icon">♧</span>
+        <span class="nav-label">Agents</span>
+      </button>
+
+
+      <button
+        class="nav-item"
+        data-section="automation"
+      >
+        <span class="nav-icon">✦</span>
+        <span class="nav-label">AI Automation</span>
+      </button>
+
+
+      <div class="nav-label-heading">
+        System
+      </div>
+
+
+      <button
+        class="nav-item"
+        data-section="settings"
+      >
+        <span class="nav-icon">⚙</span>
+        <span class="nav-label">Settings</span>
+      </button>
+
+    </nav>
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+      <button
+        class="logout-btn"
+        onclick="location.href='../index.html'"
+      >
+
+        <span class="nav-icon">
+          ↪
+        </span>
+
+        <span class="nav-label">
+          Logout
+        </span>
+
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MOBILE OVERLAY -->
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- ==========================================================
+       MAIN
+  =========================================================== -->
+
+  <main
+    class="main-content"
+    id="mainContent"
+  >
+
+
+    <!-- ========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="page-header">
+
+      <div class="page-title-area">
+
+        <h1>
+          <span id="pageGreeting">
+            Dashboard
+          </span>
+        </h1>
+
+        <p id="pageDescription">
+          Here's what's happening across your support operation.
+        </p>
+
+      </div>
+
+
+      <div class="header-actions">
+
+        <span
+          class="header-date"
+          id="currentDate"
+        ></span>
+
+        <button
+          class="sidebar-toggle"
+          id="sidebarToggle"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- ========================================================
+         DASHBOARD
+    ========================================================= -->
+
+    <section
+      class="section-content active"
+      data-section="dashboard"
+    >
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Total Conversations
+          </div>
+
+          <div class="stat-value">
+            24,892
+          </div>
+
+          <div class="stat-change">
+            ↑ 18.4% this month
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Resolution Rate
+          </div>
+
+          <div class="stat-value">
+            82.6%
+          </div>
+
+          <div class="stat-change">
+            ↑ 6.2% this month
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Active Customers
+          </div>
+
+          <div class="stat-value">
+            1,842
+          </div>
+
+          <div class="stat-change">
+            ↑ 9.7% this month
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Avg. Response Time
+          </div>
+
+          <div class="stat-value">
+            1m 42s
+          </div>
+
+          <div class="stat-change">
+            ↓ 18.3% faster
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-2">
+
+        <!-- REVENUE / CONVERSATIONS -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Conversations Overview
+            </h3>
+
+            <span>
+              Last 7 days
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="chart-container">
+
+              <svg
+                class="line-chart"
+                viewBox="0 0 700 250"
+                preserveAspectRatio="none"
+              >
+
+                <g class="chart-grid-lines">
+
+                  <line x1="0" y1="30" x2="700" y2="30"/>
+                  <line x1="0" y1="90" x2="700" y2="90"/>
+                  <line x1="0" y1="150" x2="700" y2="150"/>
+                  <line x1="0" y1="210" x2="700" y2="210"/>
+
+                </g>
+
+                <path
+                  class="chart-area"
+                  d="M0 190 L100 160 L200 175 L300 110 L400 130 L500 80 L600 105 L700 45 L700 250 L0 250 Z"
+                />
+
+                <path
+                  class="chart-line"
+                  d="M0 190 L100 160 L200 175 L300 110 L400 130 L500 80 L600 105 L700 45"
+                />
+
+                <circle class="chart-point" cx="700" cy="45" r="5"/>
+
+              </svg>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CHANNELS -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Conversations by Channel
+            </h3>
+
+            <span>
+              This month
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="donut-wrap">
+
+              <div class="donut">
+
+                <div class="donut-center">
+                  82%
+                </div>
+
+              </div>
+
+
+              <div class="legend">
+
+                <div class="legend-item">
+
+                  <span class="legend-dot"></span>
+
+                  Chat — 70%
+
+                </div>
+
+
+                <div class="legend-item">
+
+                  <span class="legend-dot gray"></span>
+
+                  Email — 20%
+
+                </div>
+
+
+                <div class="legend-item">
+
+                  <span class="legend-dot light"></span>
+
+                  Phone — 10%
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-2">
+
+        <!-- RECENT CONVERSATIONS -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Recent Conversations
+            </h3>
+
+            <span>
+              View all →
+            </span>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Customer</th>
+                  <th>Issue</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <tr>
+
+                  <td>
+                    <div class="person">
+
+                      <div class="avatar">
+                        SJ
+                      </div>
+
+                      <div class="person-name">
+
+                        <strong>
+                          Sarah Jenkins
+                        </strong>
+
+                        <span>
+                          2 min ago
+                        </span>
+
+                      </div>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    Login issue
+                  </td>
+
+                  <td>
+                    <span class="badge badge-green">
+                      Resolved
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    <div class="person">
+
+                      <div class="avatar">
+                        MD
+                      </div>
+
+                      <div class="person-name">
+
+                        <strong>
+                          Mike Davis
+                        </strong>
+
+                        <span>
+                          8 min ago
+                        </span>
+
+                      </div>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    Refund request
+                  </td>
+
+                  <td>
+                    <span class="badge badge-orange">
+                      Pending
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    <div class="person">
+
+                      <div class="avatar">
+                        EM
+                      </div>
+
+                      <div class="person-name">
+
+                        <strong>
+                          Emma Miller
+                        </strong>
+
+                        <span>
+                          12 min ago
+                        </span>
+
+                      </div>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    Feature request
+                  </td>
+
+                  <td>
+                    <span class="badge badge-blue">
+                      Open
+                    </span>
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACTIVITY -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Recent Activity
+            </h3>
+
+            <span>
+              Today
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="activity-list">
+
+              <div class="activity-item">
+
+                <div class="activity-icon">
+                  ✦
+                </div>
+
+                <div class="activity-text">
+
+                  <strong>
+                    AI resolved a conversation
+                  </strong>
+
+                  <span>
+                    Login issue — Sarah Jenkins · 2m ago
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="activity-item">
+
+                <div class="activity-icon">
+                  +
+                </div>
+
+                <div class="activity-text">
+
+                  <strong>
+                    New customer joined
+                  </strong>
+
+                  <span>
+                    Acme Corporation · 18m ago
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="activity-item">
+
+                <div class="activity-icon">
+                  ✓
+                </div>
+
+                <div class="activity-text">
+
+                  <strong>
+                    Agent resolved ticket
+                  </strong>
+
+                  <span>
+                    Michael Davis · 32m ago
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         CUSTOMERS
+    ========================================================= -->
+
+    <section
+      class="section-content"
+      data-section="customers"
+    >
+
+      <div class="content-heading">
+
+        <div>
+
+          <h2>
+            Customers
+          </h2>
+
+          <p>
+            Manage and understand your customer base.
+          </p>
+
+        </div>
+
+        <div class="heading-actions">
+
+          <button class="btn">
+            Export
+          </button>
+
+          <button class="btn btn-dark">
+            + Add Customer
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Total Customers
+          </div>
+
+          <div class="stat-value">
+            1,842
+          </div>
+
+          <div class="stat-change">
+            ↑ 9.7%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            New This Month
+          </div>
+
+          <div class="stat-value">
+            218
+          </div>
+
+          <div class="stat-change">
+            ↑ 14.2%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            At Risk
+          </div>
+
+          <div class="stat-value">
+            34
+          </div>
+
+          <div class="stat-change negative">
+            ↑ 4.1%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Avg. Satisfaction
+          </div>
+
+          <div class="stat-value">
+            4.7
+          </div>
+
+          <div class="stat-change">
+            ↑ 0.3
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+
+          <h3>
+            Customer Directory
+          </h3>
+
+          <span>
+            1,842 customers
+          </span>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Customer</th>
+                <th>Company</th>
+                <th>Conversations</th>
+                <th>Health</th>
+                <th>Status</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              <tr>
+
+                <td>
+
+                  <div class="person">
+
+                    <div class="avatar">
+                      SJ
+                    </div>
+
+                    <div class="person-name">
+
+                      <strong>
+                        Sarah Jenkins
+                      </strong>
+
+                      <span>
+                        sarah@example.com
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+                  Acme Inc.
+                </td>
+
+                <td>
+                  42
+                </td>
+
+                <td>
+
+                  <div class="health-score">
+
+                    92%
+
+                    <div class="health-bar">
+                      <div
+                        class="health-fill"
+                        style="width:92%"
+                      ></div>
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+                  <span class="badge badge-green">
+                    Healthy
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+
+                  <div class="person">
+
+                    <div class="avatar">
+                      MD
+                    </div>
+
+                    <div class="person-name">
+
+                      <strong>
+                        Michael Davis
+                      </strong>
+
+                      <span>
+                        michael@example.com
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+                  Vertex Labs
+                </td>
+
+                <td>
+                  28
+                </td>
+
+                <td>
+
+                  <div class="health-score">
+
+                    76%
+
+                    <div class="health-bar">
+                      <div
+                        class="health-fill"
+                        style="width:76%"
+                      ></div>
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+                  <span class="badge badge-blue">
+                    Active
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+
+                  <div class="person">
+
+                    <div class="avatar">
+                      EM
+                    </div>
+
+                    <div class="person-name">
+
+                      <strong>
+                        Emma Miller
+                      </strong>
+
+                      <span>
+                        emma@example.com
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+                  Northstar
+                </td>
+
+                <td>
+                  16
+                </td>
+
+                <td>
+
+                  <div class="health-score">
+
+                    44%
+
+                    <div class="health-bar">
+                      <div
+                        class="health-fill"
+                        style="width:44%"
+                      ></div>
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+                  <span class="badge badge-orange">
+                    At Risk
+                  </span>
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         CONVERSATIONS
+    ========================================================= -->
+
+    <section
+      class="section-content"
+      data-section="conversations"
+    >
+
+      <div class="content-heading">
+
+        <div>
+
+          <h2>
+            Conversations
+          </h2>
+
+          <p>
+            Monitor customer conversations across every channel.
+          </p>
+
+        </div>
+
+        <div class="heading-actions">
+
+          <button class="btn">
+            Filter
+          </button>
+
+          <button class="btn btn-dark">
+            New Conversation
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="conversation-layout">
+
+
+          <!-- CONVERSATION LIST -->
+
+          <div class="conversation-list">
+
+            <div class="conversation-search">
+
+              <input
+                class="search-input"
+                placeholder="Search conversations..."
+              >
+
+            </div>
+
+
+            <div
+              class="conversation-item active"
+            >
+
+              <div class="avatar">
+                SJ
+              </div>
+
+              <div class="conversation-info">
+
+                <strong>
+                  Sarah Jenkins
+                </strong>
+
+                <p>
+                  I can't login after the update...
+                </p>
+
+              </div>
+
+              <span class="conversation-time">
+                2m
+              </span>
+
+            </div>
+
+
+            <div class="conversation-item">
+
+              <div class="avatar">
+                MD
+              </div>
+
+              <div class="conversation-info">
+
+                <strong>
+                  Michael Davis
+                </strong>
+
+                <p>
+                  Can I get a refund?
+                </p>
+
+              </div>
+
+              <span class="conversation-time">
+                8m
+              </span>
+
+            </div>
+
+
+            <div class="conversation-item">
+
+              <div class="avatar">
+                EM
+              </div>
+
+              <div class="conversation-info">
+
+                <strong>
+                  Emma Miller
+                </strong>
+
+                <p>
+                  Is this feature available?
+                </p>
+
+              </div>
+
+              <span class="conversation-time">
+                12m
+              </span>
+
+            </div>
+
+
+            <div class="conversation-item">
+
+              <div class="avatar">
+                JD
+              </div>
+
+              <div class="conversation-info">
+
+                <strong>
+                  James Davis
+                </strong>
+
+                <p>
+                  Billing information update
+                </p>
+
+              </div>
+
+              <span class="conversation-time">
+                21m
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- CHAT -->
+
+          <div class="chat-window">
+
+            <div class="chat-header">
+
+              <div class="chat-person">
+
+                <div class="avatar">
+                  SJ
+                </div>
+
+                <div>
+
+                  <strong>
+                    Sarah Jenkins
+                  </strong>
+
+                  <div
+                    style="
+                    display:flex;
+                    align-items:center;
+                    gap:5px;
+                    color:#888;
+                    font-size:10px;
+                    "
+                  >
+
+                    <span class="online-dot"></span>
+
+                    Online
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <span class="badge badge-green">
+                Resolved
+              </span>
+
+            </div>
+
+
+            <div class="chat-body">
+
+              <div class="message customer">
+
+                I can't seem to log in after the
+                update this morning.
+
+              </div>
+
+
+              <div class="ai-response">
+
+                <strong>
+                  ✦ AI Suggested Response
+                </strong>
+
+                This looks like a known cache
+                issue. Recommend clearing the
+                browser cache and trying again.
+
+              </div>
+
+
+              <div class="message agent">
+
+                Hi Sarah! I'm sorry you're
+                experiencing this issue.
+
+                We've already deployed a fix.
+
+              </div>
+
+
+              <div class="message customer">
+
+                Perfect. It's working now.
+                Thank you!
+
+              </div>
+
+            </div>
+
+
+            <div class="chat-input">
+
+              <input
+                placeholder="Type a reply..."
+              >
+
+              <button class="btn btn-dark">
+                Send ↗
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         ANALYTICS
+    ========================================================= -->
+
+    <section
+      class="section-content"
+      data-section="analytics"
+    >
+
+      <div class="content-heading">
+
+        <div>
+
+          <h2>
+            Analytics
+          </h2>
+
+          <p>
+            Measure support performance and customer experience.
+          </p>
+
+        </div>
+
+        <div class="heading-actions">
+
+          <button class="btn">
+            Last 30 days ▾
+          </button>
+
+          <button class="btn btn-dark">
+            Export Report
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Resolution Rate
+          </div>
+
+          <div class="stat-value">
+            82.6%
+          </div>
+
+          <div class="stat-change">
+            ↑ 6.2%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            First Response
+          </div>
+
+          <div class="stat-value">
+            1m 42s
+          </div>
+
+          <div class="stat-change">
+            ↓ 18.3%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            CSAT
+          </div>
+
+          <div class="stat-value">
+            94.2%
+          </div>
+
+          <div class="stat-change">
+            ↑ 3.8%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            AI Resolution
+          </div>
+
+          <div class="stat-value">
+            68.4%
+          </div>
+
+          <div class="stat-change">
+            ↑ 11.6%
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-2">
+
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Weekly Conversations
+            </h3>
+
+            <span>
+              7 days
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="bar-chart">
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:48%"
+                ></div>
+
+                <span class="bar-label">
+                  Mon
+                </span>
+
+              </div>
+
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:62%"
+                ></div>
+
+                <span class="bar-label">
+                  Tue
+                </span>
+
+              </div>
+
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:56%"
+                ></div>
+
+                <span class="bar-label">
+                  Wed
+                </span>
+
+              </div>
+
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:79%"
+                ></div>
+
+                <span class="bar-label">
+                  Thu
+                </span>
+
+              </div>
+
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:68%"
+                ></div>
+
+                <span class="bar-label">
+                  Fri
+                </span>
+
+              </div>
+
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:45%"
+                ></div>
+
+                <span class="bar-label">
+                  Sat
+                </span>
+
+              </div>
+
+
+              <div class="bar-group">
+
+                <div
+                  class="bar"
+                  style="height:38%"
+                ></div>
+
+                <span class="bar-label">
+                  Sun
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Resolution Breakdown
+            </h3>
+
+            <span>
+              This month
+            </span>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="donut-wrap">
+
+              <div class="donut">
+
+                <div class="donut-center">
+                  82.6%
+                </div>
+
+              </div>
+
+
+              <div class="legend">
+
+                <div class="legend-item">
+
+                  <span class="legend-dot"></span>
+
+                  AI resolved — 68.4%
+
+                </div>
+
+
+                <div class="legend-item">
+
+                  <span class="legend-dot gray"></span>
+
+                  Agent resolved — 14.2%
+
+                </div>
+
+
+                <div class="legend-item">
+
+                  <span class="legend-dot light"></span>
+
+                  Escalated — 17.4%
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+
+          <h3>
+            Support Performance
+          </h3>
+
+          <span>
+            By channel
+          </span>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Channel</th>
+                <th>Conversations</th>
+                <th>Resolution</th>
+                <th>Avg. Response</th>
+                <th>CSAT</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr>
+
+                <td>
+                  Live Chat
+                </td>
+
+                <td>
+                  15,842
+                </td>
+
+                <td>
+                  88.2%
+                </td>
+
+                <td>
+                  42 sec
+                </td>
+
+                <td>
+                  96.1%
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Email
+                </td>
+
+                <td>
+                  6,218
+                </td>
+
+                <td>
+                  76.8%
+                </td>
+
+                <td>
+                  12 min
+                </td>
+
+                <td>
+                  91.4%
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Phone
+                </td>
+
+                <td>
+                  2,832
+                </td>
+
+                <td>
+                  81.4%
+                </td>
+
+                <td>
+                  2m 18s
+                </td>
+
+                <td>
+                  93.8%
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         AGENTS
+    ========================================================= -->
+
+    <section
+      class="section-content"
+      data-section="agents"
+    >
+
+      <div class="content-heading">
+
+        <div>
+
+          <h2>
+            Agent Productivity
+          </h2>
+
+          <p>
+            Monitor workload, performance and team efficiency.
+          </p>
+
+        </div>
+
+        <div class="heading-actions">
+
+          <button class="btn">
+            Manage Team
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Active Agents
+          </div>
+
+          <div class="stat-value">
+            24
+          </div>
+
+          <div class="stat-change">
+            21 online now
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Conversations / Agent
+          </div>
+
+          <div class="stat-value">
+            38.4
+          </div>
+
+          <div class="stat-change">
+            ↑ 12.8%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Avg. Handle Time
+          </div>
+
+          <div class="stat-value">
+            4m 18s
+          </div>
+
+          <div class="stat-change">
+            ↓ 8.4%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Team CSAT
+          </div>
+
+          <div class="stat-value">
+            94.8%
+          </div>
+
+          <div class="stat-change">
+            ↑ 2.1%
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-3">
+
+
+        <div class="card agent-card">
+
+          <div class="agent-top">
+
+            <div class="agent-profile">
+
+              <div class="large-avatar">
+                SK
+              </div>
+
+              <div class="agent-name">
+
+                <strong>
+                  Sarah Kim
+                </strong>
+
+                <span>
+                  Senior Support Agent
+                </span>
+
+              </div>
+
+            </div>
+
+            <span class="badge badge-green">
+              Online
+            </span>
+
+          </div>
+
+
+          <div class="productivity">
+
+            <div class="productivity-row">
+
+              <span>
+                Productivity
+              </span>
+
+              <strong>
+                94%
+              </strong>
+
+            </div>
+
+            <div class="progress">
+
+              <div
+                class="progress-fill"
+                style="width:94%"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card agent-card">
+
+          <div class="agent-top">
+
+            <div class="agent-profile">
+
+              <div class="large-avatar">
+                JD
+              </div>
+
+              <div class="agent-name">
+
+                <strong>
+                  James Davis
+                </strong>
+
+                <span>
+                  Support Agent
+                </span>
+
+              </div>
+
+            </div>
+
+            <span class="badge badge-green">
+              Online
+            </span>
+
+          </div>
+
+
+          <div class="productivity">
+
+            <div class="productivity-row">
+
+              <span>
+                Productivity
+              </span>
+
+              <strong>
+                87%
+              </strong>
+
+            </div>
+
+            <div class="progress">
+
+              <div
+                class="progress-fill"
+                style="width:87%"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card agent-card">
+
+          <div class="agent-top">
+
+            <div class="agent-profile">
+
+              <div class="large-avatar">
+                EM
+              </div>
+
+              <div class="agent-name">
+
+                <strong>
+                  Emma Miller
+                </strong>
+
+                <span>
+                  Support Agent
+                </span>
+
+              </div>
+
+            </div>
+
+            <span class="badge badge-orange">
+              Away
+            </span>
+
+          </div>
+
+
+          <div class="productivity">
+
+            <div class="productivity-row">
+
+              <span>
+                Productivity
+              </span>
+
+              <strong>
+                81%
+              </strong>
+
+            </div>
+
+            <div class="progress">
+
+              <div
+                class="progress-fill"
+                style="width:81%"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+
+          <h3>
+            Agent Performance
+          </h3>
+
+          <span>
+            This week
+          </span>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Agent</th>
+                <th>Assigned</th>
+                <th>Resolved</th>
+                <th>CSAT</th>
+                <th>Avg. Handle</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr>
+
+                <td>
+                  Sarah Kim
+                </td>
+
+                <td>
+                  184
+                </td>
+
+                <td>
+                  176
+                </td>
+
+                <td>
+                  97.2%
+                </td>
+
+                <td>
+                  3m 42s
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  James Davis
+                </td>
+
+                <td>
+                  168
+                </td>
+
+                <td>
+                  151
+                </td>
+
+                <td>
+                  94.6%
+                </td>
+
+                <td>
+                  4m 08s
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Emma Miller
+                </td>
+
+                <td>
+                  149
+                </td>
+
+                <td>
+                  138
+                </td>
+
+                <td>
+                  92.4%
+                </td>
+
+                <td>
+                  4m 32s
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         AI AUTOMATION
+    ========================================================= -->
+
+    <section
+      class="section-content"
+      data-section="automation"
+    >
+
+      <div class="content-heading">
+
+        <div>
+
+          <h2>
+            AI Automation
+          </h2>
+
+          <p>
+            Configure AI workflows that automatically resolve support requests.
+          </p>
+
+        </div>
+
+        <button class="btn btn-dark">
+          + Create Automation
+        </button>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            AI Resolutions
+          </div>
+
+          <div class="stat-value">
+            17,026
+          </div>
+
+          <div class="stat-change">
+            ↑ 24.8%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Automation Rate
+          </div>
+
+          <div class="stat-value">
+            68.4%
+          </div>
+
+          <div class="stat-change">
+            ↑ 11.6%
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Hours Saved
+          </div>
+
+          <div class="stat-value">
+            1,248
+          </div>
+
+          <div class="stat-change">
+            This month
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            AI Accuracy
+          </div>
+
+          <div class="stat-value">
+            97.8%
+          </div>
+
+          <div class="stat-change">
+            ↑ 1.4%
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-3">
+
+
+        <div class="card automation-card">
+
+          <div class="automation-icon">
+            ✦
+          </div>
+
+          <h3>
+            Auto Resolve
+          </h3>
+
+          <p>
+            Automatically resolve common customer
+            questions using your knowledge base.
+          </p>
+
+          <div class="automation-footer">
+
+            <span class="badge badge-green">
+              8,420 resolved
+            </span>
+
+            <button
+              class="toggle active"
+              onclick="toggleAutomation(this)"
+            ></button>
+
+          </div>
+
+        </div>
+
+
+        <div class="card automation-card">
+
+          <div class="automation-icon">
+            ◈
+          </div>
+
+          <h3>
+            Smart Routing
+          </h3>
+
+          <p>
+            Automatically route conversations to
+            the right agent based on intent.
+          </p>
+
+          <div class="automation-footer">
+
+            <span class="badge badge-blue">
+              4,218 routed
+            </span>
+
+            <button
+              class="toggle active"
+              onclick="toggleAutomation(this)"
+            ></button>
+
+          </div>
+
+        </div>
+
+
+        <div class="card automation-card">
+
+          <div class="automation-icon">
+            ⚡
+          </div>
+
+          <h3>
+            AI Summaries
+          </h3>
+
+          <p>
+            Generate instant conversation summaries
+            for agents and managers.
+          </p>
+
+          <div class="automation-footer">
+
+            <span class="badge badge-purple">
+              12,842 summaries
+            </span>
+
+            <button
+              class="toggle active"
+              onclick="toggleAutomation(this)"
+            ></button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+
+          <h3>
+            Automation Performance
+          </h3>
+
+          <span>
+            Last 30 days
+          </span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="bar-chart">
+
+            <div class="bar-group">
+
+              <div
+                class="bar"
+                style="height:45%"
+              ></div>
+
+              <span class="bar-label">
+                W1
+              </span>
+
+            </div>
+
+
+            <div class="bar-group">
+
+              <div
+                class="bar"
+                style="height:56%"
+              ></div>
+
+              <span class="bar-label">
+                W2
+              </span>
+
+            </div>
+
+
+            <div class="bar-group">
+
+              <div
+                class="bar"
+                style="height:63%"
+              ></div>
+
+              <span class="bar-label">
+                W3
+              </span>
+
+            </div>
+
+
+            <div class="bar-group">
+
+              <div
+                class="bar"
+                style="height:72%"
+              ></div>
+
+              <span class="bar-label">
+                W4
+              </span>
+
+            </div>
+
+
+            <div class="bar-group">
+
+              <div
+                class="bar"
+                style="height:88%"
+              ></div>
+
+              <span class="bar-label">
+                W5
+              </span>
+
+            </div>
+
+
+            <div class="bar-group">
+
+              <div
+                class="bar"
+                style="height:94%"
+              ></div>
+
+              <span class="bar-label">
+                W6
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         SETTINGS
+    ========================================================= -->
+
+    <section
+      class="section-content"
+      data-section="settings"
+    >
+
+      <div class="content-heading">
+
+        <div>
+
+          <h2>
+            Settings
+          </h2>
+
+          <p>
+            Manage your workspace and support preferences.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid-2">
+
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Workspace
+            </h3>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="settings-list">
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    Workspace Name
+                  </strong>
+
+                  <span>
+                    Name shown across your dashboard.
+                  </span>
+
+                </div>
+
+                <input
+                  class="setting-select"
+                  value="SupportAI"
+                >
+
+              </div>
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    Default Language
+                  </strong>
+
+                  <span>
+                    Language used by your support agents.
+                  </span>
+
+                </div>
+
+                <select class="setting-select">
+
+                  <option>
+                    English
+                  </option>
+
+                  <option>
+                    Telugu
+                  </option>
+
+                  <option>
+                    Hindi
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    AI Suggestions
+                  </strong>
+
+                  <span>
+                    Allow AI to recommend responses.
+                  </span>
+
+                </div>
+
+                <button
+                  class="toggle active"
+                  onclick="toggleAutomation(this)"
+                ></button>
+
+              </div>
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    Email Notifications
+                  </strong>
+
+                  <span>
+                    Receive important support alerts.
+                  </span>
+
+                </div>
+
+                <button
+                  class="toggle active"
+                  onclick="toggleAutomation(this)"
+                ></button>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h3>
+              Security
+            </h3>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="settings-list">
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    Two-factor Authentication
+                  </strong>
+
+                  <span>
+                    Protect administrator accounts.
+                  </span>
+
+                </div>
+
+                <button
+                  class="toggle active"
+                  onclick="toggleAutomation(this)"
+                ></button>
+
+              </div>
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    Session Timeout
+                  </strong>
+
+                  <span>
+                    Automatically sign out inactive users.
+                  </span>
+
+                </div>
+
+                <select class="setting-select">
+
+                  <option>
+                    30 minutes
+                  </option>
+
+                  <option>
+                    1 hour
+                  </option>
+
+                  <option>
+                    4 hours
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="setting-row">
+
+                <div class="setting-info">
+
+                  <strong>
+                    Login Alerts
+                  </strong>
+
+                  <span>
+                    Notify administrators of new logins.
+                  </span>
+
+                </div>
+
+                <button
+                  class="toggle active"
+                  onclick="toggleAutomation(this)"
+                ></button>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+
+<script>
+
+  /* ============================================================
+     USER
+  ============================================================ */
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  let userEmail =
+    urlParams.get("email");
+
+  let formattedName = "Sujith";
+
+
+  if (userEmail) {
+
+    const userName =
+      userEmail.split("@")[0];
+
+    formattedName =
+      userName.charAt(0).toUpperCase() +
+      userName.slice(1);
+
+    localStorage.setItem(
+      "supportai_username",
+      formattedName
+    );
+
+  } else if (
+    localStorage.getItem("supportai_username")
+  ) {
+
+    formattedName =
+      localStorage.getItem("supportai_username");
+
+  }
+
+
+  /* ============================================================
+     DATE
+  ============================================================ */
+
+  function showDate() {
+
+    const date =
+      new Date();
+
+    const options = {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    };
+
+    document.getElementById(
+      "currentDate"
+    ).textContent =
+      date.toLocaleDateString(
+        "en-US",
+        options
+      );
+  }
+
+  showDate();
+
+
+  /* ============================================================
+     SECTION CONFIGURATION
+  ============================================================ */
+
+  const sectionMeta = {
+
+    dashboard: {
+      title: "Dashboard",
+      description:
+        "Here's what's happening across your support operation."
+    },
+
+    customers: {
+      title: "Customers",
+      description:
+        "Manage and understand your customer base."
+    },
+
+    conversations: {
+      title: "Conversations",
+      description:
+        "Monitor customer conversations across every channel."
+    },
+
+    analytics: {
+      title: "Analytics",
+      description:
+        "Measure support performance and customer experience."
+    },
+
+    agents: {
+      title: "Agent Productivity",
+      description:
+        "Monitor workload, performance and team efficiency."
+    },
+
+    automation: {
+      title: "AI Automation",
+      description:
+        "Configure AI workflows that automatically resolve support requests."
+    },
+
+    settings: {
+      title: "Settings",
+      description:
+        "Manage your workspace and support preferences."
+    }
+
+  };
+
+
+  /* ============================================================
+     NAVIGATION
+  ============================================================ */
+
+  const navItems =
+    document.querySelectorAll(
+      ".nav-item[data-section]"
+    );
+
+  const sections =
+    document.querySelectorAll(
+      ".section-content"
+    );
+
+
+  function activateSection(sectionId) {
+
+    /*
+      Remove active state from all navigation items.
+    */
+
+    navItems.forEach(item => {
+
+      item.classList.remove("active");
+
+    });
+
+
+    /*
+      Add active state to selected navigation item.
+    */
+
+    const activeNav =
+      document.querySelector(
+        `.nav-item[data-section="${sectionId}"]`
+      );
+
+    if (activeNav) {
+
+      activeNav.classList.add("active");
+
+    }
+
+
+    /*
+      Hide every dashboard view.
+    */
+
+    sections.forEach(section => {
+
+      section.classList.remove("active");
+
+    });
+
+
+    /*
+      Show selected dashboard view.
+    */
+
+    const targetSection =
+      document.querySelector(
+        `.section-content[data-section="${sectionId}"]`
+      );
+
+    if (targetSection) {
+
+      targetSection.classList.add("active");
+
+    }
+
+
+    /*
+      Update main header.
+    */
+
+    if (sectionMeta[sectionId]) {
+
+      document.getElementById(
+        "pageGreeting"
+      ).textContent =
+        sectionMeta[sectionId].title;
+
+
+      document.getElementById(
+        "pageDescription"
+      ).textContent =
+        sectionMeta[sectionId].description;
+
+    }
+
+
+    /*
+      Close mobile sidebar.
+    */
+
+    closeSidebarMobile();
+
+
+    /*
+      Scroll main content to top.
+    */
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  navItems.forEach(item => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        const section =
+          item.dataset.section;
+
+        activateSection(section);
+
+      }
+    );
+
+  });
+
+
+  /* ============================================================
+     SIDEBAR COLLAPSE
+  ============================================================ */
+
+  const sidebar =
+    document.getElementById("sidebar");
+
+  const sidebarBrand =
+    document.getElementById("sidebarBrand");
+
+  let collapsed = false;
+
+
+  /*
+    Desktop:
+    Double-click the logo/brand to collapse.
+  */
+
+  sidebarBrand.addEventListener(
+    "dblclick",
+    event => {
+
+      event.preventDefault();
+
+      if (window.innerWidth <= 768) {
+        return;
+      }
+
+      collapsed =
+        !collapsed;
+
+      sidebar.classList.toggle(
+        "collapsed",
+        collapsed
+      );
+
+    }
+  );
+
+
+  /* ============================================================
+     MOBILE SIDEBAR
+  ============================================================ */
+
+  const sidebarToggle =
+    document.getElementById(
+      "sidebarToggle"
+    );
+
+  const sidebarOverlay =
+    document.getElementById(
+      "sidebarOverlay"
+    );
+
+
+  function openSidebarMobile() {
+
+    sidebar.classList.add("open");
+
+    sidebarOverlay.classList.add(
+      "active"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  function closeSidebarMobile() {
+
+    sidebar.classList.remove("open");
+
+    sidebarOverlay.classList.remove(
+      "active"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  sidebarToggle.addEventListener(
+    "click",
+    () => {
+
+      if (
+        sidebar.classList.contains("open")
+      ) {
+
+        closeSidebarMobile();
+
+      } else {
+
+        openSidebarMobile();
+
+      }
+
+    }
+  );
+
+
+  sidebarOverlay.addEventListener(
+    "click",
+    closeSidebarMobile
+  );
+
+
+  /* ============================================================
+     AUTOMATION TOGGLE
+  ============================================================ */
+
+  function toggleAutomation(button) {
+
+    button.classList.toggle("active");
+
+  }
+
+
+  /* ============================================================
+     CONVERSATION SELECTION
+  ============================================================ */
+
+  const conversationItems =
+    document.querySelectorAll(
+      ".conversation-item"
+    );
+
+
+  conversationItems.forEach(item => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        conversationItems.forEach(
+          conversation => {
+
+            conversation.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+        item.classList.add(
+          "active"
+        );
+
+      }
+    );
+
+  });
+
+
+  /* ============================================================
+     SEARCH
+  ============================================================ */
+
+  const searchInput =
+    document.querySelector(
+      ".search-input"
+    );
+
+
+  if (searchInput) {
+
+    searchInput.addEventListener(
+      "input",
+      () => {
+
+        const query =
+          searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+        conversationItems.forEach(
+          item => {
+
+            const text =
+              item.textContent
+                .toLowerCase();
+
+
+            if (
+              text.includes(query)
+            ) {
+
+              item.style.display =
+                "flex";
+
+            } else {
+
+              item.style.display =
+                "none";
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+  }
+
+
+  /* ============================================================
+     RESIZE
+  ============================================================ */
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      if (window.innerWidth > 768) {
+
+        closeSidebarMobile();
+
+      }
+
+    }
+  );
+
+
+  /* ============================================================
+     INITIAL STATE
+  ============================================================ */
+
+  activateSection("dashboard");
+
+
+  /* ============================================================
+     REDIRECT DATA-SECTION BUTTONS
+  ============================================================ */
+  
+  document.querySelectorAll(".section-content[data-section] button, .section-content[data-section] .btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "../404.html";
+    });
+  });
+
+</script>
+
+</body>
+</html>
