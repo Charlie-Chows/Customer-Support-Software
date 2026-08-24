@@ -424,6 +424,7 @@
       margin-left: var(--sidebar-width);
 
       min-height: 100vh;
+      min-width: 0;
 
       padding: 32px 38px 50px;
 
@@ -444,6 +445,25 @@
       justify-content: space-between;
 
       margin-bottom: 30px;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-top: -15px;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      bottom: 0;
+      left: -38px;
+      right: -38px;
+      background: var(--bg);
+      z-index: -1;
     }
 
     .page-header h1 {
@@ -452,6 +472,7 @@
       line-height: 1.2;
 
       letter-spacing: -0.04em;
+      word-break: break-word;
     }
 
     .page-header h1 span {
@@ -645,6 +666,7 @@
       padding: 20px;
 
       min-height: 340px;
+      min-width: 0;
     }
 
     .card-header {
@@ -681,6 +703,7 @@
       overflow: hidden;
 
       margin-bottom: 20px;
+      min-width: 0;
     }
 
     .table-header {
@@ -1217,6 +1240,7 @@
     }
 
     .knowledge-card {
+      cursor: pointer;
       padding: 22px;
 
       background: #ffffff;
@@ -1571,6 +1595,10 @@
     }
 
     @media (max-width: 992px) {
+      .page-header::before {
+        left: -28px;
+        right: -28px;
+      }
 
       :root {
         --sidebar-width: 230px;
@@ -1590,6 +1618,10 @@
     }
 
     @media (max-width: 768px) {
+      .page-header::before {
+        left: -17px;
+        right: -17px;
+      }
 
       .sidebar {
         width: 270px;
@@ -1687,6 +1719,10 @@
     }
 
     @media (max-width: 480px) {
+      .page-header::before {
+        left: -13px;
+        right: -13px;
+      }
 
       .main-content {
         padding: 18px 13px 30px;
@@ -1769,6 +1805,10 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    img[src*="logo_trimmed"] { 
+      filter: brightness(0) !important; 
+    }
   </style>
 </head>
 
@@ -1787,7 +1827,7 @@
           <img
             src="../logo_trimmed.webp"
             alt="Stackly"
-            style="height: 26px; width: auto;"
+            style="height: 26px; width: auto; filter: brightness(0);"
           >
         </a>
       </div>
@@ -1960,7 +2000,7 @@
       <header class="page-header">
 
         <h1>
-          👋 Hello,
+        Hello,
           <span id="userGreeting">
             Sujith
           </span>
@@ -1976,6 +2016,7 @@
           <button
             class="notification-btn"
             aria-label="Notifications"
+            onclick="location.href='../404.html'"
           >
             <span class="material-symbols-outlined">
               notifications
@@ -2309,7 +2350,7 @@
 
           <div
             class="quick-action"
-            data-target="tickets"
+            onclick="window.location.href='../404.html'"
           >
 
             <div class="quick-action-icon">
@@ -2333,7 +2374,7 @@
 
           <div
             class="quick-action"
-            data-target="knowledge"
+            onclick="window.location.href='../404.html'"
           >
 
             <div class="quick-action-icon">
@@ -2357,7 +2398,7 @@
 
           <div
             class="quick-action"
-            data-target="conversations"
+            onclick="window.location.href='../404.html'"
           >
 
             <div class="quick-action-icon">
@@ -2421,7 +2462,7 @@
 
           </div>
 
-          <button
+          <button onclick="window.location.href='../404.html'"
             class="primary-btn"
             id="newTicketBtn"
           >
@@ -2820,7 +2861,7 @@
                 autocomplete="off"
               >
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="primary-btn"
                 type="submit"
               >
@@ -2879,7 +2920,7 @@
 
         <div class="knowledge-grid">
 
-          <article class="knowledge-card">
+          <article class="knowledge-card" onclick="window.location.href='../404.html'">
 
             <div class="knowledge-icon">
               <span class="material-symbols-outlined">
@@ -2895,14 +2936,14 @@
               Learn the basics and get your workspace configured in a few simple steps.
             </p>
 
-            <a href="#">
+            <a href="../404.html">
               View articles →
             </a>
 
           </article>
 
 
-          <article class="knowledge-card">
+          <article class="knowledge-card" onclick="window.location.href='../404.html'">
 
             <div class="knowledge-icon">
               <span class="material-symbols-outlined">
@@ -2918,14 +2959,14 @@
               Find information about subscriptions, invoices, refunds and payment methods.
             </p>
 
-            <a href="#">
+            <a href="../404.html">
               View articles →
             </a>
 
           </article>
 
 
-          <article class="knowledge-card">
+          <article class="knowledge-card" onclick="window.location.href='../404.html'">
 
             <div class="knowledge-icon">
               <span class="material-symbols-outlined">
@@ -2941,14 +2982,14 @@
               Manage your account, password, authentication and security preferences.
             </p>
 
-            <a href="#">
+            <a href="../404.html">
               View articles →
             </a>
 
           </article>
 
 
-          <article class="knowledge-card">
+          <article class="knowledge-card" onclick="window.location.href='../404.html'">
 
             <div class="knowledge-icon">
               <span class="material-symbols-outlined">
@@ -2964,14 +3005,14 @@
               Connect Stackly with your existing tools and configure your integrations.
             </p>
 
-            <a href="#">
+            <a href="../404.html">
               View articles →
             </a>
 
           </article>
 
 
-          <article class="knowledge-card">
+          <article class="knowledge-card" onclick="window.location.href='../404.html'">
 
             <div class="knowledge-icon">
               <span class="material-symbols-outlined">
@@ -2987,14 +3028,14 @@
               Learn how Stackly AI can automatically classify, route and resolve conversations.
             </p>
 
-            <a href="#">
+            <a href="../404.html">
               View articles →
             </a>
 
           </article>
 
 
-          <article class="knowledge-card">
+          <article class="knowledge-card" onclick="window.location.href='../404.html'">
 
             <div class="knowledge-icon">
               <span class="material-symbols-outlined">
@@ -3010,7 +3051,7 @@
               Can't find what you're looking for? Start a conversation with our support team.
             </p>
 
-            <a href="#" data-target="conversations">
+            <a href="../404.html" >
               Contact us →
             </a>
 
@@ -3143,7 +3184,7 @@
 
               <div class="form-actions">
 
-                <button
+                <button onclick="window.location.href='../404.html'"
                   class="primary-btn"
                   type="submit"
                 >
@@ -3210,7 +3251,7 @@
 
               </div>
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="toggle active"
                 aria-label="Toggle email notifications"
               ></button>
@@ -3232,7 +3273,7 @@
 
               </div>
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="toggle active"
                 aria-label="Toggle ticket updates"
               ></button>
@@ -3254,7 +3295,7 @@
 
               </div>
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="toggle"
                 aria-label="Toggle marketing emails"
               ></button>
@@ -3289,7 +3330,7 @@
 
               </div>
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="toggle"
                 aria-label="Toggle compact dashboard"
               ></button>
@@ -3311,7 +3352,7 @@
 
               </div>
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="toggle active"
                 aria-label="Toggle sound notifications"
               ></button>
@@ -3333,7 +3374,7 @@
 
               </div>
 
-              <button
+              <button onclick="window.location.href='../404.html'"
                 class="toggle active"
                 aria-label="Toggle auto refresh"
               ></button>
@@ -4068,21 +4109,7 @@
       const newTicketBtn =
         document.getElementById("newTicketBtn");
 
-
-      if (newTicketBtn) {
-
-        newTicketBtn.addEventListener(
-          "click",
-          function () {
-
-            alert(
-              "New ticket creation will be connected to the backend here."
-            );
-
-          }
-        );
-
-      }
+      // Popup removed to allow default inline onclick redirect.
 
 
       /* ==========================================================
@@ -4406,7 +4433,7 @@
             );
 
             window.location.href =
-              "index.html";
+              "../index.html";
 
           }
         );

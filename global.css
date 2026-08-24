@@ -153,3 +153,8 @@ img {
     scroll-behavior: auto !important;
   }
 }
+
+/* Global Logo Filter - Converts logo to solid black */
+img[src*="logo_trimmed"] { 
+  filter: brightness(0) !important; 
+}
