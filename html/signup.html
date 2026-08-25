@@ -395,9 +395,9 @@
 
             <span>
               I agree to the
-              <a href="404.html">Terms of Service</a>
+              <a href="../404.html">Terms of Service</a>
               and
-              <a href="404.html">Privacy Policy</a>.
+              <a href="../404.html">Privacy Policy</a>.
             </span>
 
           </label>
@@ -802,9 +802,7 @@
         if (!valid) return;
 
 
-        submitButton.classList.add("loading");
-
-        submitButton.disabled = true;
+        // No loading state needed for instant redirect
 
 
         /*
@@ -812,9 +810,7 @@
           Replace with backend/API authentication later.
         */
 
-        setTimeout(() => {
-
-          const username =
+        const username =
             email.split("@")[0];
 
           const displayName =
@@ -844,15 +840,7 @@
           );
 
 
-          const target =
-            role === "admin"
-              ? "admin.html"
-              : "user.html";
-
-
-          window.location.href = target;
-
-        }, 700);
+          window.location.href = "login.html";
 
       });
 

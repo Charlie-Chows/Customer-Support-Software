@@ -97,9 +97,9 @@
 }
 
 .brand-logo img {
-  height: 28px; /* Increased logo size */
+  height: 40px; 
   width: auto;
-  filter: brightness(0); /* Converts the logo to black to match the theme */
+  filter: brightness(0); 
 }
 
 /* Desktop Navigation */

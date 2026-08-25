@@ -4,7 +4,7 @@
 
 .auth-page {
   height: 100vh;
-  overflow: hidden;
+  overflow-y: auto;
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(500px, 1.05fr);
   background: var(--color-bg);
@@ -16,7 +16,8 @@
    ============================================================ */
 
 .auth-visual {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 100vh;
   overflow: hidden;
   background: #111;
@@ -105,13 +106,12 @@
 
 .auth-content {
   position: relative;
-  height: 100vh;
-  padding: 20px clamp(30px, 5vw, 80px);
+  min-height: 100vh;
+  padding: 80px clamp(30px, 5vw, 80px) 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--color-bg);
-  overflow-y: hidden;
 }
 
 .auth-back {

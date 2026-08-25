@@ -290,7 +290,7 @@
             </label>
 
             <a
-              href="404.html"
+              href="../404.html"
               class="auth-link"
             >
               Forgot password?
@@ -326,7 +326,7 @@
           <div class="social-buttons">
 
             <a
-              href="404.html"
+              href="../404.html"
               class="social-button"
             >
 
@@ -345,7 +345,7 @@
 
 
             <a
-              href="404.html"
+              href="../404.html"
               class="social-button"
             >
 
@@ -623,9 +623,7 @@
         if (!valid) return;
 
 
-        submitButton.classList.add("loading");
-
-        submitButton.disabled = true;
+        // No loading state needed for instant redirect
 
 
         /*
@@ -633,9 +631,7 @@
           Replace this block with the backend/API call later.
         */
 
-        setTimeout(() => {
-
-          const username =
+        const username =
             email.split("@")[0];
 
           const displayName =
@@ -688,8 +684,6 @@
 
 
           window.location.href = target;
-
-        }, 700);
 
       });
 
