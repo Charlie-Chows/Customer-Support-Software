@@ -21,12 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburgerBtn.setAttribute('aria-expanded', 'false');
         mobileNavOverlay.classList.remove('is-open');
         document.body.style.overflow = ''; // Restore scrolling
+        document.documentElement.style.overflow = '';
       } else {
         // Open Menu
         hamburgerBtn.classList.add('is-active');
         hamburgerBtn.setAttribute('aria-expanded', 'true');
         mobileNavOverlay.classList.add('is-open');
         document.body.style.overflow = 'hidden'; // Prevent background scroll
+        document.documentElement.style.overflow = 'hidden';
       }
     });
 
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburgerBtn.setAttribute('aria-expanded', 'false');
         mobileNavOverlay.classList.remove('is-open');
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       });
     });
   }
